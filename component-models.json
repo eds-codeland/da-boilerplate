@@ -138,6 +138,24 @@
     "id": "columns",
     "fields": [
       {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Columns options",
+        "description": "",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Advantages",
+            "value": "advantages"
+          }
+        ]
+      },
+      {
         "component": "number",
         "valueType": "number",
         "name": "columns",
