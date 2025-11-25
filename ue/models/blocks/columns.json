@@ -52,6 +52,10 @@
             {
               "name": "Advantages",
               "value": "advantages"
+            },
+            {
+              "name": "Material Check",
+              "value": "material-check"
             }
           ]
         },
