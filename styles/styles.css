@@ -137,6 +137,17 @@ h4 { font-size: var(--heading-font-size-m); }
 h5 { font-size: var(--heading-font-size-s); }
 h6 { font-size: var(--heading-font-size-xs); }
 
+h2 {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 70px;
+    line-height: 70px;
+    letter-spacing: 0;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
 p,
 dl,
 ol,
@@ -275,6 +286,8 @@ main .section.highlight {
 
 main .section.centered {
     text-align: center;
+    padding-left: calc(1 / 6 * 100%);
+    max-width: calc(2 / 3 * 100%);
 }
 
 main .section {
