@@ -1,20 +1,94 @@
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+    background-color: black;
+    color: white;
+    font-size: var(--body-font-size-xxs);
+    padding-top: 130px;
+    padding-bottom: 100px;
 }
 
 footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+    margin: auto;
+    max-width: 1200px;
+    padding: 40px 24px 24px;
 }
 
 footer .footer p {
-  margin: 0;
+    margin: 0;
 }
 
+footer .footer .columns h6 {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    color: #FFF;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1.5rem !important;
+}
+
+footer .footer .columns {
+    a {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 0.8px;
+        color: #FFFFFF;
+        opacity: 0.7;
+        background-color: black;
+        margin: 0;
+        border: 0;
+        padding: 0;
+        margin-bottom: .5rem !important;
+    }
+    a:hover {
+        color: yellow
+    }
+}
+
+footer .columns > div > div:nth-of-type(1) {
+    text-transform: uppercase;
+}
+
+footer .footer .copyright > div {
+    display: flex;
+}
+
+footer .footer .copyright > div > div {
+    width: 100%;
+}
+footer .footer .copyright > div > div:nth-of-type(2) {
+    display: flex;
+    justify-content: flex-end;
+    a {
+        margin: 12px;
+        background: black;
+        border: 1px solid white;
+        padding: 0.7em 1.4em;
+    }
+    a:hover {
+        background: yellow;
+        color: black;
+        border: 1px solid yellow;
+    }
+}
+footer .footer .copyright > div > div:nth-of-type(1) {
+    a {
+        color: white;
+    }
+    a:hover {
+        color: yellow;
+        text-decoration: auto;
+    }
+}
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
-  }
+    footer .footer > div {
+        padding: 40px 32px 24px;
+    }
+    footer .columns > div {
+        align-items: flex-start;
+        flex-direction: unset;
+        gap: 24px;
+    }
 }

@@ -25,3 +25,27 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+.cards.headquarter {
+    > ul {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    > ul > li {
+        background-color: black;
+    }
+
+    .cards-card-image {
+        padding: 0.5em;
+    }
+
+    .cards-card-body {
+        text-align: center;
+        > h4 {
+            color: yellow;
+        }
+        > p {
+            color: white;
+        }
+    }
+}
