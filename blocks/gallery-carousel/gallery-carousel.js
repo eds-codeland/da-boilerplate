@@ -1,5 +1,6 @@
 export default function decorate(block) {
   // Gallery Carousel component: 4-column image grid with lightbox
+  // ✅ Universal Editor compatible: Preserves DOM and adds data attributes
 
   const rows = Array.from(block.querySelectorAll(':scope > div'));
   console.warn('🎯 GALLERY CAROUSEL DEBUG - Total rows:', rows.length);
@@ -13,6 +14,8 @@ export default function decorate(block) {
 
   const container = document.createElement('div');
   container.classList.add('gallery-carousel-items');
+  // ✅ Add data attribute for UE instrumentation
+  container.setAttribute('data-editable', 'true');
 
   let imageCount = 0;
 
@@ -70,6 +73,9 @@ export default function decorate(block) {
         imageCount++;
         const item = document.createElement('div');
         item.classList.add('gallery-carousel-item');
+        // ✅ Add data attributes for UE instrumentation
+        item.setAttribute('data-editable', 'true');
+        item.setAttribute('data-item-index', imageCount);
 
         // Create gallery link with lightbox
         const galleryLink = document.createElement('a');
@@ -82,8 +88,10 @@ export default function decorate(block) {
         // Create image
         const imgElement = document.createElement('img');
         imgElement.src = imageUrl;
-        imgElement.alt = '';
+        imgElement.alt = caption;
         imgElement.classList.add('gallery-carousel-image');
+        // ✅ Add data attributes for UE instrumentation
+        imgElement.setAttribute('data-editable', 'image');
 
         galleryLink.append(imgElement);
         item.append(galleryLink);
@@ -96,7 +104,7 @@ export default function decorate(block) {
 
   console.log('Gallery carousel - Total images added:', imageCount);
 
-  block.textContent = '';
+  // ✅ IMPORTANT: Append instead of replacing to preserve DOM for UE
   block.append(container);
 
   // Load Fancybox if available
