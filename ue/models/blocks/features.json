@@ -5,9 +5,7 @@
       "id": "features",
       "plugins": {
         "da": {
-          "name": "features",
-          "rows": 1,
-          "columns": 4
+          "unsafeHTML": "<div class=\"features\"><div><div></div><div></div><div></div><div><a href=\"\"></a></div></div></div>"
         }
       },
       "model": "features",
@@ -18,8 +16,7 @@
       "id": "feature",
       "plugins": {
         "da": {
-          "name": "feature",
-          "behaviour": "column-row"
+          "unsafeHTML": "<div><div></div><div></div><div></div><div><a href=\"\"></a></div></div>"
         },
         "model": "feature"
       }
@@ -50,7 +47,13 @@
         {
           "component": "text",
           "valueType": "string",
-          "name": "div:nth-child(4)",
+          "name": "div:nth-child(4)>a:nth-child(1)[href]",
+          "label": "Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(4)>a:nth-child(1)",
           "label": "Caption"
         }
       ]
