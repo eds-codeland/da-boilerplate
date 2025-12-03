@@ -142,9 +142,13 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
 }
+
+.adobe-ue-edit .sectors-carousel .sectors-slide-bg picture,
+.adobe-ue-edit .sectors-carousel .sectors-slide-bg img {
+    height: 1000px !important;
+}
+
 
 .sectors-carousel .sectors-slide-gradient {
   position: absolute;
