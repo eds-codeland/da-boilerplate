@@ -5,8 +5,16 @@
       "id": "features",
       "plugins": {
         "da": {
-          "rows": 1,
-          "columns": 4
+          "unsafeHTML": "<div class=\"features\"><div><div></div><div></div><div></div><div><a href=\"\"></a></div></div></div>"
+        }
+      }
+    },
+    {
+      "title": "Feature",
+      "id": "feature",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div><div></div><div></div><div></div><div><a href=\"\"></a></div></div>"
         }
       }
     }
