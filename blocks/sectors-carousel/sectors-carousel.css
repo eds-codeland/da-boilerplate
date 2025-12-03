@@ -133,11 +133,6 @@
   left: 0;
 }
 
-.adobe-ue-edit .sectors-carousel .sectors-slide-bg picture,
-.adobe-ue-edit .sectors-carousel .sectors-slide-bg img {
-    height: 1000px !important;
-}
-
 
 .sectors-carousel .sectors-slide-gradient {
   position: absolute;
