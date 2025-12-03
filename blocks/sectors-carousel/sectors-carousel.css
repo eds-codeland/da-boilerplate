@@ -2,6 +2,10 @@
     padding-top: 4em !important;
 }
 
+.adobe-ue-edit .sectors-carousel {
+    max-height: 1000px !important;
+}
+
 .sectors-carousel {
   position: relative;
   width: 100vw;
@@ -108,6 +112,11 @@
   clip-path: inset(0);
 }
 
+.adobe-ue-edit .sectors-carousel .sectors-slide {
+    height: 1000px !important;
+}
+
+
 .sectors-carousel .sectors-slide.active {
   opacity: 1;
   visibility: visible;
@@ -123,6 +132,11 @@
   z-index: -2;
 }
 
+.adobe-ue-edit .sectors-carousel .sectors-slide-bg {
+    height: 1000px !important;
+}
+
+
 .sectors-carousel .sectors-slide-bg picture,
 .sectors-carousel .sectors-slide-bg img {
   width: 100%;
@@ -131,9 +145,13 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
 }
+
+.adobe-ue-edit .sectors-carousel .sectors-slide-bg picture,
+.adobe-ue-edit .sectors-carousel .sectors-slide-bg img {
+    height: 1000px !important;
+}
+
 
 .sectors-carousel .sectors-slide-gradient {
   position: absolute;
@@ -144,6 +162,11 @@
   background: rgba(0,0,0,0.6);
   z-index: -1;
 }
+
+.adobe-ue-edit .sectors-carousel .sectors-slide-gradient {
+    height: 1000px !important;
+}
+
 
 .sectors-carousel .sectors-slide-caption {
   position: absolute;
