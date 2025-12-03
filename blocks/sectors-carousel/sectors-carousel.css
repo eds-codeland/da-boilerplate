@@ -133,11 +133,6 @@
   left: 0;
 }
 
-.adobe-ue-edit .sectors-carousel .sectors-slide-bg picture,
-.adobe-ue-edit .sectors-carousel .sectors-slide-bg img {
-    height: 100% !important;
-}
-
 
 .sectors-carousel .sectors-slide-gradient {
   position: absolute;
@@ -241,10 +236,6 @@
   .sectors-carousel .sectors-nav-link::before {
     left: -24px;
     width: 20px;
-  }
-
-  .sectors-carousel .sectors-slides {
-    min-height: 70vh;
   }
 
   .sectors-carousel .sectors-slide-caption {
