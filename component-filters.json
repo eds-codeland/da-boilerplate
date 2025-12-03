@@ -63,18 +63,7 @@
   {
     "id": "features",
     "components": [
-      "features-row"
-    ]
-  },
-  {
-    "id": "features-row",
-    "components": []
-  },
-  {
-    "id": "features-cell",
-    "components": [
-      "text",
-      "image"
+      "feature"
     ]
   },
   {

@@ -148,27 +148,16 @@
               "name": "features",
               "rows": 1,
               "columns": 4,
-              "behaviour": "features"
+              "behaviour": "columns"
             }
           }
         },
         {
-          "title": "Features Row",
-          "id": "features-row",
+          "title": "Feature",
+          "id": "feature",
           "plugins": {
             "da": {
-              "name": "features-row",
-              "behaviour": "features-row"
-            }
-          }
-        },
-        {
-          "title": "Features Cell",
-          "id": "features-cell",
-          "plugins": {
-            "da": {
-              "unsafeHTML": "<div></div>",
-              "behaviour": "features-cell"
+              "name": "feature"
             }
           }
         },
