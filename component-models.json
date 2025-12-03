@@ -221,7 +221,7 @@
         "component": "reference",
         "valueType": "string",
         "name": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img[src]",
-        "label": "Image",
+        "label": "Side Image",
         "multi": false
       },
       {
