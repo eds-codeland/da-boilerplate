@@ -1,0 +1,24 @@
+version: 1
+indices:
+  default:
+    target: /query-index.json
+    include:
+      - '/**'
+    properties:
+      title:
+        select: head > meta[property="og:title"]
+        value: |
+          attribute(el, 'content')
+      image:
+        select: head > meta[property="og:image"]
+        value: |
+          attribute(el, 'content')
+      description:
+        select: head > meta[name="description"]
+        value: attribute(el, 'content')
+      robots:
+        select: head > meta[name="robots"]
+        value: attribute(el, 'content')
+      type:
+        select: head > meta[name="type"]
+        value: attribute(el, 'content')
