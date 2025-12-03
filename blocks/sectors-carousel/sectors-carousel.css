@@ -2,6 +2,10 @@
     padding-top: 4em !important;
 }
 
+.adobe-ue-edit .sectors-carousel {
+    max-height: 1000px !important;
+}
+
 .sectors-carousel {
   position: relative;
   min-height: 100vh;
