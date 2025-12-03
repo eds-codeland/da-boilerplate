@@ -29,31 +29,31 @@
         {
           "component": "text",
           "valueType": "string",
-          "name": "div:nth-child(1)",
+          "name": "div:nth-child(1)>div:nth-child(1)",
           "label": "Sequence"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "div:nth-child(2)",
+          "name": "div:nth-child(1)>div:nth-child(2)",
           "label": "Heading"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "div:nth-child(3)",
+          "name": "div:nth-child(1)>div:nth-child(3)",
           "label": "Description"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "div:nth-child(4)>a:nth-child(1)[href]",
+          "name": "div:nth-child(1)>div:nth-child(4)>a:nth-child(1)[href]",
           "label": "Link"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "div:nth-child(4)>a:nth-child(1)",
+          "name": "div:nth-child(1)>div:nth-child(4)>a:nth-child(1)",
           "label": "Caption"
         }
       ]
