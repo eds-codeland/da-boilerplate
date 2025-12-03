@@ -148,7 +148,7 @@
               "name": "features",
               "rows": 1,
               "columns": 4,
-              "behaviour": "features"
+              "behaviour": "columns"
             }
           }
         },
@@ -158,7 +158,7 @@
           "plugins": {
             "da": {
               "name": "features-row",
-              "behaviour": "features-row"
+              "behaviour": "columns-row"
             }
           }
         },
@@ -168,7 +168,7 @@
           "plugins": {
             "da": {
               "unsafeHTML": "<div></div>",
-              "behaviour": "features-cell"
+              "behaviour": "columns-cell"
             }
           }
         },
