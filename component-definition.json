@@ -141,27 +141,6 @@
           }
         },
         {
-          "title": "Features",
-          "id": "features",
-          "plugins": {
-            "da": {
-              "unsafeHTML": "<div class=\"features\"><div><div></div><div></div><div></div></div></div>"
-            }
-          },
-          "model": "features",
-          "filter": "features"
-        },
-        {
-          "title": "Feature",
-          "id": "feature",
-          "plugins": {
-            "da": {
-              "unsafeHTML": "<div><div></div><div></div><div></div></div>"
-            },
-            "model": "feature"
-          }
-        },
-        {
           "title": "Fragment",
           "id": "fragment",
           "plugins": {
@@ -176,6 +155,17 @@
           "plugins": {
             "da": {
               "unsafeHTML": "<div class=\"hero\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture><h1></h1></div></div></div>"
+            }
+          }
+        },
+        {
+          "title": "PA6",
+          "id": "pa6",
+          "plugins": {
+            "da": {
+              "name": "pa6",
+              "rows": 1,
+              "columns": 2
             }
           }
         },
