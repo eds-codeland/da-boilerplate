@@ -6,13 +6,13 @@ export default function decorate(block) {
 
   const container = document.createElement('div');
   container.classList.add('gallery-carousel-items');
-  // ✅ Add data attribute for UE instrumentation
+  // Add data attribute for UE instrumentation
   container.setAttribute('data-editable', 'true');
 
   let imageCount = 0;
 
   // Process each row as a gallery item (skip first row which is the block name)
-  rows.forEach((row, idx) => {
+  rows.forEach((row) => {
     const cells = Array.from(row.querySelectorAll(':scope > div'));
 
     if (cells.length >= 1) {
@@ -71,23 +71,20 @@ export default function decorate(block) {
         // Don't show URL as caption - leave it empty
         galleryLink.setAttribute('data-caption', '');
 
-        // Create image
         const imgElement = document.createElement('img');
         imgElement.src = imageUrl;
         imgElement.alt = caption;
         imgElement.classList.add('gallery-carousel-image');
-        // ✅ Add data attributes for UE instrumentation
-        imgElement.setAttribute('data-editable', 'image');
+        imgElement.loading = 'lazy';
 
         galleryLink.append(imgElement);
         item.append(galleryLink);
         container.append(item);
-
       }
     }
   });
 
-  // ✅ IMPORTANT: Append instead of replacing to preserve DOM for UE
+  // IMPORTANT: Append instead of replacing to preserve DOM for UE
   block.append(container);
 
   // Load Fancybox if available
