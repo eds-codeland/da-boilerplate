@@ -141,6 +141,38 @@
           }
         },
         {
+          "title": "Features",
+          "id": "features",
+          "plugins": {
+            "da": {
+              "name": "features",
+              "rows": 1,
+              "columns": 4,
+              "behaviour": "features"
+            }
+          }
+        },
+        {
+          "title": "Features Row",
+          "id": "features-row",
+          "plugins": {
+            "da": {
+              "name": "features-row",
+              "behaviour": "features-row"
+            }
+          }
+        },
+        {
+          "title": "Features Cell",
+          "id": "features-cell",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div></div>",
+              "behaviour": "features-cell"
+            }
+          }
+        },
+        {
           "title": "Fragment",
           "id": "fragment",
           "plugins": {

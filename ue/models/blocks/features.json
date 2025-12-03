@@ -1,0 +1,70 @@
+{
+  "definitions": [
+    {
+      "title": "Features",
+      "id": "features",
+      "plugins": {
+        "da": {
+          "name": "features",
+          "rows": 1,
+          "columns": 4,
+          "behaviour": "features"
+        }
+      }
+    },
+    {
+      "title": "Features Row",
+      "id": "features-row",
+      "plugins": {
+        "da": {
+          "name": "features-row",
+          "behaviour": "features-row"
+        }
+      }
+    },
+    {
+      "title": "Features Cell",
+      "id": "features-cell",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div></div>",
+          "behaviour": "features-cell"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "features",
+      "fields": [
+        {
+          "component": "select",
+          "name": "classes",
+          "value": "",
+          "label": "Features options",
+          "description": "",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "features",
+      "components": [
+        "features-row"
+      ]
+    },
+    {
+      "id": "features-row",
+      "components": []
+    },
+    {
+      "id": "features-cell",
+      "components": [
+        "text",
+        "image"
+      ]
+    }
+  ]
+}
