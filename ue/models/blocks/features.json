@@ -7,7 +7,9 @@
         "da": {
           "unsafeHTML": "<div class=\"features\"><div><div></div><div></div><div></div><div><a href=\"\"></a></div></div></div>"
         }
-      }
+      },
+      "model": "features",
+      "filter": "features"
     },
     {
       "title": "Feature",
@@ -15,7 +17,8 @@
       "plugins": {
         "da": {
           "unsafeHTML": "<div><div></div><div></div><div></div><div><a href=\"\"></a></div></div>"
-        }
+        },
+        "model": "feature"
       }
     }
   ],
