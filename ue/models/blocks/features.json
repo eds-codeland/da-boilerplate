@@ -1,0 +1,70 @@
+{
+  "definitions": [
+    {
+      "title": "Features",
+      "id": "features",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div class=\"features\"><div><div></div><div></div><div></div><div><a href=\"\"></a></div></div></div>"
+        }
+      },
+      "model": "features",
+      "filter": "features"
+    },
+    {
+      "title": "Feature",
+      "id": "feature",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div><div></div><div></div><div></div><div><a href=\"\"></a></div></div>"
+        },
+        "model": "feature"
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "feature",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(1)",
+          "label": "Sequence"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(2)",
+          "label": "Heading"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(3)",
+          "label": "Description"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(4)>a:nth-child(1)[href]",
+          "label": "Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(4)>a:nth-child(1)",
+          "label": "Caption"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "features",
+      "components": [
+        "feature"
+      ]
+    }
+  ]
+}

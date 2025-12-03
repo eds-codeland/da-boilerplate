@@ -13,6 +13,7 @@
       "carousel",
       "columns",
       "embed",
+      "features",
       "fragment",
       "form",
       "hero",
@@ -59,6 +60,12 @@
     "components": [
       "text",
       "image"
+    ]
+  },
+  {
+    "id": "features",
+    "components": [
+      "feature"
     ]
   },
   {

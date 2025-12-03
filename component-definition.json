@@ -141,6 +141,27 @@
           }
         },
         {
+          "title": "Features",
+          "id": "features",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div class=\"features\"><div><div></div><div></div><div></div><div><a href=\"\"></a></div></div></div>"
+            }
+          },
+          "model": "features",
+          "filter": "features"
+        },
+        {
+          "title": "Feature",
+          "id": "feature",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div><div></div><div></div><div></div><div><a href=\"\"></a></div></div>"
+            },
+            "model": "feature"
+          }
+        },
+        {
           "title": "Fragment",
           "id": "fragment",
           "plugins": {
