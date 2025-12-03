@@ -174,16 +174,7 @@
   },
   {
     "id": "features",
-    "fields": [
-      {
-        "component": "select",
-        "name": "classes",
-        "value": "",
-        "label": "Features options",
-        "description": "",
-        "valueType": "string"
-      }
-    ]
+    "fields": []
   },
   {
     "id": "fragment",

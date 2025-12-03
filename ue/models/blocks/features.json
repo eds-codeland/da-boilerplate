@@ -8,7 +8,7 @@
           "name": "features",
           "rows": 1,
           "columns": 4,
-          "behaviour": "columns"
+          "behaviour": "features"
         }
       }
     },
@@ -18,7 +18,7 @@
       "plugins": {
         "da": {
           "name": "features-row",
-          "behaviour": "columns-row"
+          "behaviour": "features-row"
         }
       }
     },
@@ -28,7 +28,7 @@
       "plugins": {
         "da": {
           "unsafeHTML": "<div></div>",
-          "behaviour": "columns-cell"
+          "behaviour": "features-cell"
         }
       }
     }
@@ -37,14 +37,6 @@
     {
       "id": "features",
       "fields": [
-        {
-          "component": "select",
-          "name": "classes",
-          "value": "",
-          "label": "Features options",
-          "description": "",
-          "valueType": "string"
-        }
       ]
     }
   ],
