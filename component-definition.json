@@ -159,6 +159,17 @@
           }
         },
         {
+          "title": "PA6",
+          "id": "pa6",
+          "plugins": {
+            "da": {
+              "name": "pa6",
+              "rows": 1,
+              "columns": 2
+            }
+          }
+        },
+        {
           "title": "Quote",
           "id": "quote",
           "plugins": {
