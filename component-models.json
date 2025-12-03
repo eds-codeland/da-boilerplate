@@ -192,6 +192,18 @@
         "valueType": "string",
         "name": "div:nth-child(2)",
         "label": "Description"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(3)>a:nth-child(1)[href]",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(3)>a:nth-child(1)",
+        "label": "Caption"
       }
     ]
   },

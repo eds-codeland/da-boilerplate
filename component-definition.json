@@ -145,10 +145,7 @@
           "id": "features",
           "plugins": {
             "da": {
-              "name": "features",
-              "rows": 1,
-              "columns": 4,
-              "behaviour": "columns"
+              "unsafeHTML": "<div class=\"features\"><div><div></div><div></div><div></div><div><a href=\"\"></a></div></div></div>"
             }
           }
         },
@@ -157,7 +154,7 @@
           "id": "feature",
           "plugins": {
             "da": {
-              "name": "feature"
+              "unsafeHTML": "<div><div></div><div></div><div></div><div><a href=\"\"></a></div></div>"
             }
           }
         },
