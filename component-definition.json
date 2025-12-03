@@ -145,7 +145,7 @@
           "id": "features",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div class=\"features\"><div><div></div><div></div><div></div><div><a href=\"\"></a></div></div></div>"
+              "unsafeHTML": "<div class=\"features\"><div><div></div><div></div><div></div></div></div>"
             }
           },
           "model": "features",
@@ -156,7 +156,7 @@
           "id": "feature",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div><div></div><div></div><div></div><div><a href=\"\"></a></div></div>"
+              "unsafeHTML": "<div><div></div><div></div><div></div></div>"
             },
             "model": "feature"
           }
