@@ -8,7 +8,6 @@
 
 .sectors-carousel {
   position: relative;
-  min-height: 100vh;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-top: 60px;
