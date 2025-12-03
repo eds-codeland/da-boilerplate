@@ -94,7 +94,7 @@
 .sectors-carousel .sectors-slides {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: calc(100% - 70px);
   overflow: hidden;
 }
 
