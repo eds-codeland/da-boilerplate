@@ -155,6 +155,16 @@
 }
 
 .columns.features {
+    > div {
+        align-items: stretch;
+        > div {
+            display: flex;
+            flex-direction: column;
+            > *:last-child {
+                margin-top: auto;
+            }
+        }
+    }
 
     h6 {
         font-weight: 400;
@@ -187,6 +197,41 @@
         padding-bottom: 1rem !important;
         padding-top: 1.5rem !important;
         font-family: "Figtree", sans-serif;
+    }
+
+    a {
+        display: inline-block;
+        width: 44px;
+        height: 10px;
+        flex-shrink: 0;
+        transition: transform 0.2s ease;
+        align-items: center;
+        gap: 12px;
+        font-weight: 600;
+        font-size: 0;
+        text-transform: uppercase;
+        color: var(--text-color);
+        text-decoration: none;
+        letter-spacing: 0.08em;
+        background: transparent;
+        margin: 0;
+        padding: 0;
+    }
+
+    a:hover {
+        font-size: var(--body-font-size-m);
+    }
+
+    a:hover::after {
+        padding-left: 1em;
+    }
+
+    a::after {
+        content: "";
+        display: inline-block;
+        width: 44px;
+        height: 10px;
+        background: url(../../icons/icon-feather-arrow-right.svg) no-repeat center / contain;
     }
 }
 
