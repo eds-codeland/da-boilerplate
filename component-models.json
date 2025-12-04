@@ -187,25 +187,29 @@
         "component": "text",
         "valueType": "string",
         "name": "div:nth-child(1)",
-        "label": "Sequence"
+        "label": "Sequence",
+        "value": ""
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "div:nth-child(2)",
-        "label": "Heading"
+        "label": "Heading",
+        "value": ""
       },
       {
         "component": "richtext",
         "valueType": "string",
         "name": "div:nth-child(3)",
-        "label": "Description"
+        "label": "Description",
+        "value": ""
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "div:nth-child(4)",
-        "label": "Caption"
+        "label": "Caption",
+        "value": ""
       }
     ]
   },
