@@ -160,6 +160,10 @@
           {
             "name": "Material Check",
             "value": "material-check"
+          },
+          {
+            "name": "Features",
+            "value": "features"
           }
         ]
       },
