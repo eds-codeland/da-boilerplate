@@ -73,6 +73,11 @@ const setupObservers = () => {
               }
             }
             break;
+          case 'features':
+            if (removedElements.length === 1) {
+              console.log('removedElements[0].attributes[data-aue-resource]', removedElements[0].attributes['data-aue-resource']);
+            }
+            break;
           default:
             break;
         }
