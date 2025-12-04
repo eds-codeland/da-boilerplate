@@ -196,13 +196,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "div:nth-child(4)>a:nth-child(1)[href]",
-        "label": "Link"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "div:nth-child(4)>a:nth-child(1)",
+        "name": "div:nth-child(4)",
         "label": "Caption"
       }
     ]
