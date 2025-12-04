@@ -86,8 +86,8 @@ const setupObservers = () => {
                     if (targetSlide) {
                       moveInstrumentation(removed, targetSlide);
                       moveInstrumentation(removed.querySelector('div:nth-child(1)'), targetSlide.querySelector('div.feature-number'));
-                      moveInstrumentation(removed.querySelector('h3'), targetSlide.querySelector('div.feature-title'));
-                      moveInstrumentation(removed.querySelector('div:nth-child(2)'), targetSlide.querySelector('div.feature-description'));
+                      moveInstrumentation(removed.querySelector('div:nth-child(2)'), targetSlide.querySelector('h3.feature-title'));
+                      moveInstrumentation(removed.querySelector('div:nth-child(3)'), targetSlide.querySelector('div.feature-description'));
                     }
                   }
                 }
