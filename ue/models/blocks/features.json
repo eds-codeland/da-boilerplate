@@ -7,18 +7,15 @@
         "da": {
           "unsafeHTML": "<div class=\"features\"><div><div></div><div></div><div></div><div></div></div></div>"
         }
-      },
-      "model": "features",
-      "filter": "features"
+      }
     },
     {
       "title": "Feature",
-      "id": "feature",
+      "id": "feature-item",
       "plugins": {
         "da": {
           "unsafeHTML": "<div><div></div><div></div><div></div><div></div></div>"
-        },
-        "model": "feature"
+        }
       }
     }
   ],
@@ -57,7 +54,7 @@
     {
       "id": "features",
       "components": [
-        "feature"
+        "feature-item"
       ]
     }
   ]
