@@ -85,6 +85,7 @@ const setupObservers = () => {
                     const targetSlide = Array.from(slides).find((slide) => parseInt(slide.getAttribute('data-feature-index'), 10) === slideIndex);
                     if (targetSlide) {
                       moveInstrumentation(removed, targetSlide);
+                      moveInstrumentation(removed.querySelector('div:nth-child(1)'), targetSlide.querySelector('div.feature-number'));
                     }
                   }
                 }
