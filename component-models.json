@@ -58,6 +58,10 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Centered",
+            "value": "centered"
           }
         ]
       }
