@@ -41,9 +41,8 @@
 }
 
 .gallery-carousel-image {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
+  height: auto;
+  object-fit: contain;
   display: block;
   background-color: #ffffff;
   transition: transform 0.3s ease;

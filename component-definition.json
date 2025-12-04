@@ -150,17 +150,6 @@
           }
         },
         {
-          "title": "Gallery Carousel",
-          "id": "gallery-carousel",
-          "plugins": {
-            "da": {
-              "name": "gallery-carousel",
-              "rows": 5,
-              "columns": 2
-            }
-          }
-        },
-        {
           "title": "Hero",
           "id": "hero",
           "plugins": {
