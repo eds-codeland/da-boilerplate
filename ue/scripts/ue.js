@@ -75,7 +75,7 @@ const setupObservers = () => {
             break;
           case 'features':
             removedElements.forEach((removed) => {
-              if (removed.attributes['data-aue-model']?.value === 'feature-item') {
+              if (removed.attributes && removed.attributes['data-aue-model']?.value === 'feature-item') {
                 const resourceAttr = removed.getAttribute('data-aue-resource');
                 if (resourceAttr) {
                   const itemMatch = resourceAttr.match(/item-(\d+)/);
