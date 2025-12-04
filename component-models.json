@@ -173,7 +173,7 @@
     ]
   },
   {
-    "id": "feature",
+    "id": "feature-item",
     "fields": [
       {
         "component": "text",
