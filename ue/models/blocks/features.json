@@ -1,0 +1,61 @@
+{
+  "definitions": [
+    {
+      "title": "Features",
+      "id": "features",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div class=\"features\"><div><div></div><div></div><div></div><div></div></div></div>"
+        }
+      }
+    },
+    {
+      "title": "Feature",
+      "id": "feature-item",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div><div></div><div></div><div></div><div></div></div>"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "feature-item",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(1)",
+          "label": "Sequence"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(2)",
+          "label": "Heading"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "div:nth-child(3)",
+          "label": "Description"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(4)",
+          "label": "Caption"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "features",
+      "components": [
+        "feature-item"
+      ]
+    }
+  ]
+}

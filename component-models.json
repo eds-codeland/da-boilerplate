@@ -173,6 +173,35 @@
     ]
   },
   {
+    "id": "feature-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(1)",
+        "label": "Sequence"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(2)",
+        "label": "Heading"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "div:nth-child(3)",
+        "label": "Description"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(4)",
+        "label": "Caption"
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
