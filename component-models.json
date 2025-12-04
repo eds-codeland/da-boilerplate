@@ -188,7 +188,7 @@
         "label": "Heading"
       },
       {
-        "component": "text",
+        "component": "richtext",
         "valueType": "string",
         "name": "div:nth-child(3)",
         "label": "Description"
