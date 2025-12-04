@@ -74,9 +74,22 @@ const setupObservers = () => {
             }
             break;
           case 'features':
-            if (removedElements.length === 1) {
-              console.log('removedElements[0].attributes[data-aue-resource]', removedElements[0].attributes['data-aue-resource']);
-            }
+            removedElements.forEach((removed) => {
+              if (removed.attributes['data-aue-model']?.value === 'feature-item') {
+                const resourceAttr = removed.getAttribute('data-aue-resource');
+                if (resourceAttr) {
+                  const itemMatch = resourceAttr.match(/item-(\d+)/);
+                  if (itemMatch && itemMatch[1]) {
+                    const slideIndex = parseInt(itemMatch[1], 10);
+                    const slides = mutation.target.querySelectorAll('article');
+                    const targetSlide = Array.from(slides).find((slide) => parseInt(slide.getAttribute('data-slide-index'), 10) === slideIndex);
+                    if (targetSlide) {
+                      moveInstrumentation(removed, targetSlide);
+                    }
+                  }
+                }
+              }
+            });
             break;
           default:
             break;
