@@ -5,7 +5,9 @@
       "id": "features",
       "plugins": {
         "da": {
-          "unsafeHTML": "<div class=\"features\"><div><div></div><div></div><div></div><div></div></div></div>"
+          "name": "features",
+          "rows": 1,
+          "columns": 4
         }
       }
     },
@@ -14,7 +16,9 @@
       "id": "feature-item",
       "plugins": {
         "da": {
-          "unsafeHTML": "<div><div></div><div></div><div></div><div></div></div>"
+          "name": "feature-item",
+          "rows": 4,
+          "columns": 0
         }
       }
     }
@@ -27,25 +31,29 @@
           "component": "text",
           "valueType": "string",
           "name": "div:nth-child(1)",
-          "label": "Sequence"
+          "label": "Sequence",
+          "value": ""
         },
         {
           "component": "text",
           "valueType": "string",
           "name": "div:nth-child(2)",
-          "label": "Heading"
+          "label": "Heading",
+          "value": ""
         },
         {
           "component": "richtext",
           "valueType": "string",
           "name": "div:nth-child(3)",
-          "label": "Description"
+          "label": "Description",
+          "value": ""
         },
         {
           "component": "text",
           "valueType": "string",
           "name": "div:nth-child(4)",
-          "label": "Caption"
+          "label": "Caption",
+          "value": ""
         }
       ]
     }
