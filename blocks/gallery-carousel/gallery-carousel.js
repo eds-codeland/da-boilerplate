@@ -1,3 +1,5 @@
+import initUE from './ue.js';
+
 export default function decorate(block) {
   // Gallery Carousel component: 4-column image grid with lightbox
   // ✅ Universal Editor compatible: Preserves DOM and adds data attributes
@@ -76,12 +78,20 @@ export default function decorate(block) {
         imgElement.alt = caption;
         imgElement.classList.add('gallery-carousel-image');
         imgElement.loading = 'lazy';
+        // Add data attributes for UE targeting
+        imgElement.setAttribute(`data-image-${imageCount}`, imageUrl);
+        imgElement.setAttribute(`data-alt-${imageCount}`, caption);
 
         galleryLink.append(imgElement);
         item.append(galleryLink);
         container.append(item);
       }
     }
+  });
+
+  // Hide original rows but keep them in DOM (for UE compatibility)
+  Array.from(block.querySelectorAll(':scope > div')).forEach((row) => {
+    row.style.display = 'none';
   });
 
   // IMPORTANT: Append instead of replacing to preserve DOM for UE
@@ -97,4 +107,7 @@ export default function decorate(block) {
       },
     });
   }
+
+  // Initialize UE event handlers
+  initUE(block);
 }
