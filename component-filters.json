@@ -73,5 +73,11 @@
     "components": [
       "tabs-item"
     ]
+  },
+  {
+    "id": "text-cards",
+    "components": [
+      "text-card"
+    ]
   }
 ]

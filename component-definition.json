@@ -232,6 +232,27 @@
           }
         },
         {
+          "title": "Text Cards",
+          "id": "text-cards",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div class=\"text-cards\"><div><div></div></div></div>"
+            }
+          },
+          "model": "text-cards",
+          "filter": "text-cards"
+        },
+        {
+          "title": "Text Card",
+          "id": "text-card",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div><div></div></div>"
+            }
+          },
+          "model": "text-card"
+        },
+        {
           "title": "Video",
           "id": "video",
           "plugins": {
