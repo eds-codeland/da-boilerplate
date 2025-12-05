@@ -82,7 +82,7 @@ const setupObservers = () => {
                   const itemMatch = resourceAttr.match(/item-(\d+)/);
                   if (itemMatch && itemMatch[1]) {
                     const slideIndex = parseInt(itemMatch[1], 10);
-                    const slides = mutation.target.querySelectorAll('div.sector-slide');
+                    const slides = mutation.target.querySelectorAll('div.sectors-slide');
                     const targetSlide = Array.from(slides).find((slide) => parseInt(slide.getAttribute('data-slide-index'), 10) === slideIndex);
                     if (targetSlide) {
                       moveInstrumentation(removed, targetSlide);
