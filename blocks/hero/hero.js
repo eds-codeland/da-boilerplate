@@ -1,10 +1,5 @@
 import { getMetadata } from '../../scripts/aem.js';
 
-/**
- * Move UE instrumentation attributes from one element to another
- * @param {Element} from - source element
- * @param {Element} to - target element
- */
 function moveInstrumentation(from, to) {
   if (!from || !to) return;
   [...from.attributes]
@@ -18,41 +13,43 @@ function moveInstrumentation(from, to) {
     });
 }
 
+function createTextElement(tag, sourceCell, className) {
+  const element = document.createElement(tag);
+  if (className) element.classList.add(className);
+  element.textContent = sourceCell.textContent;
+  moveInstrumentation(sourceCell, element);
+  return element;
+}
+
+function extractImage(cell) {
+  const picture = cell?.querySelector('picture');
+  const img = cell?.querySelector('img');
+  if (img && picture) {
+    moveInstrumentation(picture, img);
+  }
+  return img;
+}
+
 export default function decorate(block) {
   const rows = [...block.querySelectorAll(':scope > div')];
+  const originalRows = rows.map((row) => ({ cells: [...row.children] }));
 
-  // Store original elements with their instrumentation before clearing
-  const originalRows = rows.map((row) => ({
-    element: row,
-    cells: [...row.children],
-  }));
-
-  // Clear block content
   block.innerHTML = '';
 
-  // Create hero-wrapper reference
   const wrapper = document.querySelector('.hero-wrapper');
+  const [row1, row2, row3] = originalRows;
 
-  // Row 1: main image + title
-  const row1 = originalRows[0];
-  const mainImageCell = row1?.cells[0];
-  const titleCell = row1?.cells[1];
-
-  const mainPicture = mainImageCell?.querySelector('picture');
-  const mainImage = mainImageCell?.querySelector('img');
+  // Main image
+  const mainImage = extractImage(row1?.cells[0]);
   if (mainImage) {
     mainImage.classList.add('hero-main-image');
-    // Move instrumentation from picture to image for UE
-    if (mainPicture) {
-      moveInstrumentation(mainPicture, mainImage);
-    }
     block.appendChild(mainImage);
   }
 
+  // Overlay with area, title, and description
   const overlay = document.createElement('div');
   overlay.classList.add('hero-overlay');
 
-  // Metadata area
   const area = getMetadata('area');
   if (area) {
     const areaEl = document.createElement('span');
@@ -61,65 +58,42 @@ export default function decorate(block) {
     overlay.appendChild(areaEl);
   }
 
-  // Title
-  if (titleCell) {
-    const title = document.createElement('h1');
-    title.textContent = titleCell.textContent;
-    // Move instrumentation from original cell to new h1
-    moveInstrumentation(titleCell, title);
-    overlay.appendChild(title);
+  if (row1?.cells[1]) {
+    overlay.appendChild(createTextElement('h1', row1.cells[1]));
   }
 
-  // Row 2: small image + description
-  const row2 = originalRows[1];
-  const smallImageCell = row2?.cells[0];
-  const descCell = row2?.cells[1];
-
-  // Description
-  if (descCell) {
-    const desc = document.createElement('p');
-    desc.textContent = descCell.textContent;
-    // Move instrumentation from original cell to new p
-    moveInstrumentation(descCell, desc);
-    overlay.appendChild(desc);
+  if (row2?.cells[1]) {
+    overlay.appendChild(createTextElement('p', row2.cells[1]));
   }
 
   block.appendChild(overlay);
 
   // Small image
-  const smallPicture = smallImageCell?.querySelector('picture');
-  const smallImage = smallImageCell?.querySelector('img');
+  const smallImage = extractImage(row2?.cells[0]);
   if (smallImage) {
     smallImage.classList.add('hero-small-image');
-    if (smallPicture) {
-      moveInstrumentation(smallPicture, smallImage);
-    }
     block.appendChild(smallImage);
   }
 
-  // Row 3: optional two-column text
-  if (originalRows[2]) {
+  // Optional two-column text row
+  if (row3) {
     block.classList.add('with-text');
-    const row3 = originalRows[2];
-    const col1 = row3?.cells[0];
-    const col2 = row3?.cells[1];
-
     const textRow = document.createElement('div');
     textRow.classList.add('hero-text-row');
 
-    if (col1) {
+    if (row3.cells[0]) {
       const leftText = document.createElement('div');
       leftText.classList.add('hero-text-left');
-      leftText.innerHTML = col1.innerHTML;
-      moveInstrumentation(col1, leftText);
+      leftText.innerHTML = row3.cells[0].innerHTML;
+      moveInstrumentation(row3.cells[0], leftText);
       textRow.appendChild(leftText);
     }
 
-    if (col2) {
+    if (row3.cells[1]) {
       const rightText = document.createElement('div');
       rightText.classList.add('hero-text-right');
-      rightText.innerHTML = col2.innerHTML;
-      moveInstrumentation(col2, rightText);
+      rightText.innerHTML = row3.cells[1].innerHTML;
+      moveInstrumentation(row3.cells[1], rightText);
       textRow.appendChild(rightText);
     }
 
