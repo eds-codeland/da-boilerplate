@@ -141,6 +141,28 @@
           }
         },
         {
+          "title": "Features",
+          "id": "features",
+          "plugins": {
+            "da": {
+              "name": "features",
+              "rows": 1,
+              "columns": 4
+            }
+          }
+        },
+        {
+          "title": "Feature",
+          "id": "feature-item",
+          "plugins": {
+            "da": {
+              "name": "feature-item",
+              "rows": 4,
+              "columns": 0
+            }
+          }
+        },
+        {
           "title": "Fragment",
           "id": "fragment",
           "plugins": {
@@ -150,22 +172,22 @@
           }
         },
         {
-          "title": "Gallery Carousel",
-          "id": "gallery-carousel",
-          "plugins": {
-            "da": {
-              "name": "gallery-carousel",
-              "rows": 5,
-              "columns": 2
-            }
-          }
-        },
-        {
           "title": "Hero",
           "id": "hero",
           "plugins": {
             "da": {
               "unsafeHTML": "<div class=\"hero\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture><h1></h1></div></div></div>"
+            }
+          }
+        },
+        {
+          "title": "PA6",
+          "id": "pa6",
+          "plugins": {
+            "da": {
+              "name": "pa6",
+              "rows": 1,
+              "columns": 2
             }
           }
         },
@@ -208,6 +230,27 @@
               "unsafeHTML": "<div><div><p></p></div><div></div></div>"
             }
           }
+        },
+        {
+          "title": "Text Cards",
+          "id": "text-cards",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div class=\"text-cards\"><div><div></div></div></div>"
+            }
+          },
+          "model": "text-cards",
+          "filter": "text-cards"
+        },
+        {
+          "title": "Text Card",
+          "id": "text-card",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div><div></div></div>"
+            }
+          },
+          "model": "text-card"
         },
         {
           "title": "Video",

@@ -1,0 +1,70 @@
+{
+  "definitions": [
+    {
+      "title": "Text Cards",
+      "id": "text-cards",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div class=\"text-cards\"><div><div></div></div></div>"
+        }
+      },
+      "model": "text-cards",
+      "filter": "text-cards"
+    },
+    {
+      "title": "Text Card",
+      "id": "text-card",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div><div></div></div>"
+        }
+      },
+      "model": "text-card"
+    }
+  ],
+  "models": [
+    {
+      "id": "text-cards",
+      "fields": [
+        {
+          "component": "select",
+          "name": "classes",
+          "value": "",
+          "label": "Text Cards options",
+          "description": "",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Features",
+              "value": "features"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-card",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "div:nth-child(1)",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "text-cards",
+      "components": [
+        "text-card"
+      ]
+    }
+  ]
+}

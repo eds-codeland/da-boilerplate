@@ -24,6 +24,10 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Centered",
+              "value": "centered"
             }
           ]
         }
@@ -39,11 +43,12 @@
         "carousel",
         "columns",
         "embed",
+        "features",
         "fragment",
         "form",
-        "gallery-carousel",
         "hero",
         "image",
+        "pa6",
         "quote",
         "search",
         "tabs",

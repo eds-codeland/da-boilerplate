@@ -29,6 +29,7 @@ function moveChildren(source, target) {
 function buildFeature(row, index) {
   const columns = [...row.children];
   const feature = document.createElement('article');
+  feature.dataset.featureIndex = index;
   feature.className = 'feature-card';
   feature.setAttribute('role', 'listitem');
   feature.setAttribute('tabindex', '0');

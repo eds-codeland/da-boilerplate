@@ -58,6 +58,10 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Centered",
+            "value": "centered"
           }
         ]
       }
@@ -156,6 +160,10 @@
           {
             "name": "Material Check",
             "value": "material-check"
+          },
+          {
+            "name": "Features",
+            "value": "features"
           }
         ]
       },
@@ -173,6 +181,39 @@
     ]
   },
   {
+    "id": "feature-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(1)",
+        "label": "Sequence",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(2)",
+        "label": "Heading",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "div:nth-child(3)",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(4)",
+        "label": "Caption",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
@@ -185,59 +226,6 @@
         "component": "text",
         "name": "div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1)",
         "label": "Fragment URL Text"
-      }
-    ]
-  },
-  {
-    "id": "gallery-carousel",
-    "fields": [
-      {
-        "component": "text",
-        "name": ".gallery-carousel-item:nth-child(1) img",
-        "label": "Image 1 URL",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": ".gallery-carousel-item:nth-child(1) img[alt]",
-        "label": "Image 1 Alt Text",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": ".gallery-carousel-item:nth-child(2) img",
-        "label": "Image 2 URL",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": ".gallery-carousel-item:nth-child(2) img[alt]",
-        "label": "Image 2 Alt Text",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": ".gallery-carousel-item:nth-child(3) img",
-        "label": "Image 3 URL",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": ".gallery-carousel-item:nth-child(3) img[alt]",
-        "label": "Image 3 Alt Text",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": ".gallery-carousel-item:nth-child(4) img",
-        "label": "Image 4 URL",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": ".gallery-carousel-item:nth-child(4) img[alt]",
-        "label": "Image 4 Alt Text",
-        "valueType": "string"
       }
     ]
   },
@@ -264,6 +252,25 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "pa6",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img[src]",
+        "label": "Side Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "div:nth-child(1)>div:nth-child(2)",
+        "label": "Statement",
+        "required": true
       }
     ]
   },
@@ -316,6 +323,41 @@
         "component": "richtext",
         "name": "div:nth-child(2)",
         "label": "Content",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "text-cards",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Text Cards options",
+        "description": "",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Features",
+            "value": "features"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "text-card",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "div:nth-child(1)",
+        "value": "",
+        "label": "Text",
         "valueType": "string"
       }
     ]
