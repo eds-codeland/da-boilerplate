@@ -14,7 +14,7 @@ import { showSlide } from '../../blocks/carousel/carousel.js';
 import { moveInstrumentation } from './ue-utils.js';
 
 const setupObservers = () => {
-  const mutatingBlocks = document.querySelectorAll('div.cards, div.carousel, div.accordion');
+  const mutatingBlocks = document.querySelectorAll('div.text-cards,div.cards, div.carousel, div.accordion, div.features');
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList' && mutation.target.tagName === 'DIV') {
@@ -26,6 +26,7 @@ const setupObservers = () => {
 
         switch (type) {
           case 'cards':
+          case 'text-cards':
             // handle card div > li replacements
             if (addedElements.length === 1 && addedElements[0].tagName === 'UL') {
               const ulEl = addedElements[0];
@@ -72,6 +73,27 @@ const setupObservers = () => {
                 }
               }
             }
+            break;
+          case 'features':
+            removedElements.forEach((removed) => {
+              if (removed.attributes && removed.attributes['data-aue-model']?.value === 'feature-item') {
+                const resourceAttr = removed.getAttribute('data-aue-resource');
+                if (resourceAttr) {
+                  const itemMatch = resourceAttr.match(/item-(\d+)/);
+                  if (itemMatch && itemMatch[1]) {
+                    const slideIndex = parseInt(itemMatch[1], 10);
+                    const slides = mutation.target.querySelectorAll('article');
+                    const targetSlide = Array.from(slides).find((slide) => parseInt(slide.getAttribute('data-feature-index'), 10) === slideIndex);
+                    if (targetSlide) {
+                      moveInstrumentation(removed, targetSlide);
+                      moveInstrumentation(removed.querySelector('div:nth-child(1)'), targetSlide.querySelector('div.feature-number'));
+                      moveInstrumentation(removed.querySelector('div:nth-child(2)'), targetSlide.querySelector('h3.feature-title'));
+                      moveInstrumentation(removed.querySelector('div:nth-child(3)'), targetSlide.querySelector('div.feature-description'));
+                    }
+                  }
+                }
+              }
+            });
             break;
           default:
             break;

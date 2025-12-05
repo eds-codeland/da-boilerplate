@@ -13,9 +13,9 @@
       "carousel",
       "columns",
       "embed",
+      "features",
       "fragment",
       "form",
-      "gallery-carousel",
       "hero",
       "image",
       "pa6",
@@ -63,9 +63,21 @@
     ]
   },
   {
+    "id": "features",
+    "components": [
+      "feature-item"
+    ]
+  },
+  {
     "id": "tabs",
     "components": [
       "tabs-item"
+    ]
+  },
+  {
+    "id": "text-cards",
+    "components": [
+      "text-card"
     ]
   }
 ]
