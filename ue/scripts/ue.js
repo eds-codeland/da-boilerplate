@@ -14,7 +14,7 @@ import { showSlide } from '../../blocks/carousel/carousel.js';
 import { moveInstrumentation } from './ue-utils.js';
 
 const setupObservers = () => {
-  const mutatingBlocks = document.querySelectorAll('div.text-cards,div.cards, div.carousel, div.accordion, div.features');
+  const mutatingBlocks = document.querySelectorAll('div.sectors-carousel, div.text-cards, div.cards, div.carousel, div.accordion, div.features');
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList' && mutation.target.tagName === 'DIV') {
@@ -72,6 +72,11 @@ const setupObservers = () => {
                   }
                 }
               }
+            }
+            break;
+          case 'sectors-carousel':
+            if (removedElements.length === 1 && removedElements[0].attributes['data-aue-model']?.value === 'sector-item') {
+              console.log('removed sector item');
             }
             break;
           case 'features':
