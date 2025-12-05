@@ -195,21 +195,38 @@
         "component": "reference",
         "valueType": "string",
         "name": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
-        "label": "Image",
+        "label": "Main Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[alt]",
-        "label": "Alt",
-        "value": ""
+        "label": "Main Image Alt"
       },
       {
         "component": "text",
-        "name": "div:nth-child(1)>div:nth-child(1)>h1:nth-child(2)",
-        "value": "",
-        "label": "Text",
+        "name": "div:nth-child(1)>div:nth-child(2)",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "div:nth-child(2)>div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
+        "label": "Small Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(2)>div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[alt]",
+        "label": "Small Image Alt"
+      },
+      {
+        "component": "text",
+        "name": "div:nth-child(2)>div:nth-child(2)",
+        "label": "Description",
         "valueType": "string"
       }
     ]
