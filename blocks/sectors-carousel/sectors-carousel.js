@@ -191,6 +191,7 @@ export default async function decorate(block) {
 
   slides.forEach((slide, idx) => {
     const slideEl = document.createElement('div');
+    slideEl.dataset.slideIndex = idx;
     slideEl.classList.add('sectors-slide');
     if (idx === 0) {
       slideEl.classList.add('active');

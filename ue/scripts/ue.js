@@ -75,9 +75,22 @@ const setupObservers = () => {
             }
             break;
           case 'sectors-carousel':
-            if (removedElements.length === 1 && removedElements[0].attributes['data-aue-model']?.value === 'sector-item') {
-              console.log('removed sector item');
-            }
+            removedElements.forEach((removed) => {
+              if (removed.attributes && removed.attributes['data-aue-model']?.value === 'sector-item') {
+                const resourceAttr = removed.getAttribute('data-aue-resource');
+                if (resourceAttr) {
+                  const itemMatch = resourceAttr.match(/item-(\d+)/);
+                  if (itemMatch && itemMatch[1]) {
+                    const slideIndex = parseInt(itemMatch[1], 10);
+                    const slides = mutation.target.querySelectorAll('div.sector-slide');
+                    const targetSlide = Array.from(slides).find((slide) => parseInt(slide.getAttribute('data-slide-index'), 10) === slideIndex);
+                    if (targetSlide) {
+                      moveInstrumentation(removed, targetSlide);
+                    }
+                  }
+                }
+              }
+            });
             break;
           case 'features':
             removedElements.forEach((removed) => {
