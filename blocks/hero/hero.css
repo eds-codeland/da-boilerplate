@@ -6,13 +6,15 @@ div[class="hero-wrapper"] {
 	z-index: -1;
 }
 
-
+.hero-wrapper:has(.with-text) {
+	min-height: 100vh;
+}
 
 .hero-wrapper {
 	position: relative;
 	width: 100%;
 	max-width: 100%;
-	height: 600px;
+	height: 80vh;
 	min-height: 400px;
 	display: flex;
 	align-items: center;
@@ -22,7 +24,7 @@ div[class="hero-wrapper"] {
 }
 
 .hero-wrapper:has(.with-text) {
-	min-height: 900px;
+	min-height: 140vh;
 	height: auto;
 	max-height: fit-content;
 }
@@ -39,7 +41,7 @@ div[class="hero-wrapper"] {
 }
 
 .hero.with-text .hero-main-image{
-	height: 900px;
+	height: 100vh;
 }
 
 .hero.with-text .hero-overlay{
@@ -92,7 +94,7 @@ div[class="hero-wrapper"] {
 }
 
 .hero.with-text .hero-small-image{
-	top: 620px;
+	top: 94vh;
 }
 
 .hero-area {
