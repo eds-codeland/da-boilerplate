@@ -214,6 +214,24 @@
           }
         },
         {
+          "title": "Sectors Carousel",
+          "id": "sectors-carousel",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div class=\"carousel\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div><div></div><div></div></div>"
+            }
+          }
+        },
+        {
+          "title": "Sector Slide",
+          "id": "sector-item",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div><div></div><div></div></div>"
+            }
+          }
+        },
+        {
           "title": "Tabs",
           "id": "tabs",
           "plugins": {
