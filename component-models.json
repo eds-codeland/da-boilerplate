@@ -233,50 +233,54 @@
     "id": "gallery-carousel",
     "fields": [
       {
-        "component": "image",
-        "name": ".gallery-carousel-item:nth-child(1) img",
+        "component": "reference",
+        "name": "img[data-image-1][src]",
         "label": "Image 1",
-        "valueType": "string"
+        "valueType": "string",
+        "multi": false
       },
       {
         "component": "text",
-        "name": ".gallery-carousel-item:nth-child(1) img[alt]",
+        "name": "img[data-image-1][alt]",
         "label": "Image 1 Alt Text",
         "valueType": "string"
       },
       {
-        "component": "image",
-        "name": ".gallery-carousel-item:nth-child(2) img",
+        "component": "reference",
+        "name": "img[data-image-2][src]",
         "label": "Image 2",
-        "valueType": "string"
+        "valueType": "string",
+        "multi": false
       },
       {
         "component": "text",
-        "name": ".gallery-carousel-item:nth-child(2) img[alt]",
+        "name": "img[data-image-2][alt]",
         "label": "Image 2 Alt Text",
         "valueType": "string"
       },
       {
-        "component": "image",
-        "name": ".gallery-carousel-item:nth-child(3) img",
+        "component": "reference",
+        "name": "img[data-image-3][src]",
         "label": "Image 3",
-        "valueType": "string"
+        "valueType": "string",
+        "multi": false
       },
       {
         "component": "text",
-        "name": ".gallery-carousel-item:nth-child(3) img[alt]",
+        "name": "img[data-image-3][alt]",
         "label": "Image 3 Alt Text",
         "valueType": "string"
       },
       {
-        "component": "image",
-        "name": ".gallery-carousel-item:nth-child(4) img",
+        "component": "reference",
+        "name": "img[data-image-4][src]",
         "label": "Image 4",
-        "valueType": "string"
+        "valueType": "string",
+        "multi": false
       },
       {
         "component": "text",
-        "name": ".gallery-carousel-item:nth-child(4) img[alt]",
+        "name": "img[data-image-4][alt]",
         "label": "Image 4 Alt Text",
         "valueType": "string"
       }
