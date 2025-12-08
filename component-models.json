@@ -234,54 +234,132 @@
     "fields": [
       {
         "component": "reference",
-        "name": "div:nth-child(1)>div:nth-child(1)>img:nth-child(1)[src]",
+        "name": ".gallery-carousel-item:nth-child(1) img[src]",
         "label": "Image 1",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "text",
-        "name": "div:nth-child(1)>div:nth-child(1)>img:nth-child(1)[alt]",
+        "name": ".gallery-carousel-item:nth-child(1) img[alt]",
         "label": "Image 1 Alt Text",
         "valueType": "string"
       },
       {
         "component": "reference",
-        "name": "div:nth-child(2)>div:nth-child(1)>img:nth-child(1)[src]",
+        "name": ".gallery-carousel-item:nth-child(2) img[src]",
         "label": "Image 2",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "text",
-        "name": "div:nth-child(2)>div:nth-child(1)>img:nth-child(1)[alt]",
+        "name": ".gallery-carousel-item:nth-child(2) img[alt]",
         "label": "Image 2 Alt Text",
         "valueType": "string"
       },
       {
         "component": "reference",
-        "name": "div:nth-child(3)>div:nth-child(1)>img:nth-child(1)[src]",
+        "name": ".gallery-carousel-item:nth-child(3) img[src]",
         "label": "Image 3",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "text",
-        "name": "div:nth-child(3)>div:nth-child(1)>img:nth-child(1)[alt]",
+        "name": ".gallery-carousel-item:nth-child(3) img[alt]",
         "label": "Image 3 Alt Text",
         "valueType": "string"
       },
       {
         "component": "reference",
-        "name": "div:nth-child(4)>div:nth-child(1)>img:nth-child(1)[src]",
+        "name": ".gallery-carousel-item:nth-child(4) img[src]",
         "label": "Image 4",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "text",
-        "name": "div:nth-child(4)>div:nth-child(1)>img:nth-child(1)[alt]",
+        "name": ".gallery-carousel-item:nth-child(4) img[alt]",
         "label": "Image 4 Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": ".gallery-carousel-item:nth-child(5) img[src]",
+        "label": "Image 5",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": ".gallery-carousel-item:nth-child(5) img[alt]",
+        "label": "Image 5 Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": ".gallery-carousel-item:nth-child(6) img[src]",
+        "label": "Image 6",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": ".gallery-carousel-item:nth-child(6) img[alt]",
+        "label": "Image 6 Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": ".gallery-carousel-item:nth-child(7) img[src]",
+        "label": "Image 7",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": ".gallery-carousel-item:nth-child(7) img[alt]",
+        "label": "Image 7 Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": ".gallery-carousel-item:nth-child(8) img[src]",
+        "label": "Image 8",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": ".gallery-carousel-item:nth-child(8) img[alt]",
+        "label": "Image 8 Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": ".gallery-carousel-item:nth-child(9) img[src]",
+        "label": "Image 9",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": ".gallery-carousel-item:nth-child(9) img[alt]",
+        "label": "Image 9 Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": ".gallery-carousel-item:nth-child(10) img[src]",
+        "label": "Image 10",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": ".gallery-carousel-item:nth-child(10) img[alt]",
+        "label": "Image 10 Alt Text",
         "valueType": "string"
       }
     ]
