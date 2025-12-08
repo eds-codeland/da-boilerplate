@@ -23,6 +23,7 @@
       "search",
       "tabs",
       "table",
+      "technologies",
       "text",
       "video"
     ]
@@ -72,6 +73,12 @@
     "id": "tabs",
     "components": [
       "tabs-item"
+    ]
+  },
+  {
+    "id": "technologies",
+    "components": [
+      "technology-item"
     ]
   },
   {

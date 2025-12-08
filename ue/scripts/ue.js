@@ -10,27 +10,36 @@
  * governing permissions and limitations under the License.
  */
 
-import { showSlide } from '../../blocks/carousel/carousel.js';
-import { moveInstrumentation } from './ue-utils.js';
+import { showSlide } from "../../blocks/carousel/carousel.js";
+import { moveInstrumentation } from "./ue-utils.js";
 
 const setupObservers = () => {
-  const mutatingBlocks = document.querySelectorAll('div.text-cards,div.cards, div.carousel, div.accordion, div.features');
+  const mutatingBlocks = document.querySelectorAll(
+    "div.text-cards,div.cards, div.carousel, div.accordion, div.features, div.technologies"
+  );
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      if (mutation.type === 'childList' && mutation.target.tagName === 'DIV') {
+      if (mutation.type === "childList" && mutation.target.tagName === "DIV") {
         const addedElements = mutation.addedNodes;
         const removedElements = mutation.removedNodes;
 
         // detect the mutation type of the block or picture (for cards)
-        const type = mutation.target.classList.contains('cards-card-image') ? 'cards-image' : mutation.target.attributes['data-aue-model']?.value;
+        const type = mutation.target.classList.contains("cards-card-image")
+          ? "cards-image"
+          : mutation.target.attributes["data-aue-model"]?.value;
 
         switch (type) {
-          case 'cards':
-          case 'text-cards':
+          case "cards":
+          case "text-cards":
             // handle card div > li replacements
-            if (addedElements.length === 1 && addedElements[0].tagName === 'UL') {
+            if (
+              addedElements.length === 1 &&
+              addedElements[0].tagName === "UL"
+            ) {
               const ulEl = addedElements[0];
-              const removedDivEl = [...mutation.removedNodes].filter((node) => node.tagName === 'DIV');
+              const removedDivEl = [...mutation.removedNodes].filter(
+                (node) => node.tagName === "DIV"
+              );
               removedDivEl.forEach((div, index) => {
                 if (index < ulEl.children.length) {
                   moveInstrumentation(div, ulEl.children[index]);
@@ -38,35 +47,58 @@ const setupObservers = () => {
               });
             }
             break;
-          case 'cards-image':
+          case "cards-image":
             // handle card-image picture replacements
-            if (mutation.target.classList.contains('cards-card-image')) {
-              const addedPictureEl = [...mutation.addedNodes].filter((node) => node.tagName === 'PICTURE');
-              const removedPictureEl = [...mutation.removedNodes].filter((node) => node.tagName === 'PICTURE');
-              if (addedPictureEl.length === 1 && removedPictureEl.length === 1) {
-                const oldImgEL = removedPictureEl[0].querySelector('img');
-                const newImgEl = addedPictureEl[0].querySelector('img');
+            if (mutation.target.classList.contains("cards-card-image")) {
+              const addedPictureEl = [...mutation.addedNodes].filter(
+                (node) => node.tagName === "PICTURE"
+              );
+              const removedPictureEl = [...mutation.removedNodes].filter(
+                (node) => node.tagName === "PICTURE"
+              );
+              if (
+                addedPictureEl.length === 1 &&
+                removedPictureEl.length === 1
+              ) {
+                const oldImgEL = removedPictureEl[0].querySelector("img");
+                const newImgEl = addedPictureEl[0].querySelector("img");
                 if (oldImgEL && newImgEl) {
                   moveInstrumentation(oldImgEL, newImgEl);
                 }
               }
             }
             break;
-          case 'accordion':
-            if (addedElements.length === 1 && addedElements[0].tagName === 'DETAILS') {
+          case "accordion":
+            if (
+              addedElements.length === 1 &&
+              addedElements[0].tagName === "DETAILS"
+            ) {
               moveInstrumentation(removedElements[0], addedElements[0]);
-              moveInstrumentation(removedElements[0].querySelector('div'), addedElements[0].querySelector('summary'));
+              moveInstrumentation(
+                removedElements[0].querySelector("div"),
+                addedElements[0].querySelector("summary")
+              );
             }
             break;
-          case 'carousel':
-            if (removedElements.length === 1 && removedElements[0].attributes['data-aue-model']?.value === 'carousel-item') {
-              const resourceAttr = removedElements[0].getAttribute('data-aue-resource');
+          case "carousel":
+            if (
+              removedElements.length === 1 &&
+              removedElements[0].attributes["data-aue-model"]?.value ===
+                "carousel-item"
+            ) {
+              const resourceAttr =
+                removedElements[0].getAttribute("data-aue-resource");
               if (resourceAttr) {
                 const itemMatch = resourceAttr.match(/item-(\d+)/);
                 if (itemMatch && itemMatch[1]) {
                   const slideIndex = parseInt(itemMatch[1], 10);
-                  const slides = mutation.target.querySelectorAll('li.carousel-slide');
-                  const targetSlide = Array.from(slides).find((slide) => parseInt(slide.getAttribute('data-slide-index'), 10) === slideIndex);
+                  const slides =
+                    mutation.target.querySelectorAll("li.carousel-slide");
+                  const targetSlide = Array.from(slides).find(
+                    (slide) =>
+                      parseInt(slide.getAttribute("data-slide-index"), 10) ===
+                      slideIndex
+                  );
                   if (targetSlide) {
                     moveInstrumentation(removedElements[0], targetSlide);
                   }
@@ -74,21 +106,39 @@ const setupObservers = () => {
               }
             }
             break;
-          case 'features':
+          case "features":
             removedElements.forEach((removed) => {
-              if (removed.attributes && removed.attributes['data-aue-model']?.value === 'feature-item') {
-                const resourceAttr = removed.getAttribute('data-aue-resource');
+              if (
+                removed.attributes &&
+                removed.attributes["data-aue-model"]?.value === "feature-item"
+              ) {
+                const resourceAttr = removed.getAttribute("data-aue-resource");
                 if (resourceAttr) {
                   const itemMatch = resourceAttr.match(/item-(\d+)/);
                   if (itemMatch && itemMatch[1]) {
                     const slideIndex = parseInt(itemMatch[1], 10);
-                    const slides = mutation.target.querySelectorAll('article');
-                    const targetSlide = Array.from(slides).find((slide) => parseInt(slide.getAttribute('data-feature-index'), 10) === slideIndex);
+                    const slides = mutation.target.querySelectorAll("article");
+                    const targetSlide = Array.from(slides).find(
+                      (slide) =>
+                        parseInt(
+                          slide.getAttribute("data-feature-index"),
+                          10
+                        ) === slideIndex
+                    );
                     if (targetSlide) {
                       moveInstrumentation(removed, targetSlide);
-                      moveInstrumentation(removed.querySelector('div:nth-child(1)'), targetSlide.querySelector('div.feature-number'));
-                      moveInstrumentation(removed.querySelector('div:nth-child(2)'), targetSlide.querySelector('h3.feature-title'));
-                      moveInstrumentation(removed.querySelector('div:nth-child(3)'), targetSlide.querySelector('div.feature-description'));
+                      moveInstrumentation(
+                        removed.querySelector("div:nth-child(1)"),
+                        targetSlide.querySelector("div.feature-number")
+                      );
+                      moveInstrumentation(
+                        removed.querySelector("div:nth-child(2)"),
+                        targetSlide.querySelector("h3.feature-title")
+                      );
+                      moveInstrumentation(
+                        removed.querySelector("div:nth-child(3)"),
+                        targetSlide.querySelector("div.feature-description")
+                      );
                     }
                   }
                 }
@@ -109,57 +159,66 @@ const setupObservers = () => {
 
 const setupUEEventHandlers = () => {
   // For each img source change, update the srcsets of the parent picture sources
-  document.addEventListener('aue:content-patch', (event) => {
+  document.addEventListener("aue:content-patch", (event) => {
     if (event.detail.patch.name.match(/img.*\[src\]/)) {
       const newImgSrc = event.detail.patch.value;
-      const picture = event.srcElement.querySelector('picture');
+      const picture = event.srcElement.querySelector("picture");
 
       if (picture) {
-        picture.querySelectorAll('source').forEach((source) => {
-          source.setAttribute('srcset', newImgSrc);
+        picture.querySelectorAll("source").forEach((source) => {
+          source.setAttribute("srcset", newImgSrc);
         });
       }
     }
   });
 
-  document.addEventListener('aue:ui-select', (event) => {
+  document.addEventListener("aue:ui-select", (event) => {
     const { detail } = event;
     const resource = detail?.resource;
 
     if (resource) {
-      const element = document.querySelector(`[data-aue-resource="${resource}"]`);
+      const element = document.querySelector(
+        `[data-aue-resource="${resource}"]`
+      );
       if (!element) {
         return;
       }
-      const blockEl = element.parentElement?.closest('.block[data-aue-resource]') || element?.closest('.block[data-aue-resource]');
+      const blockEl =
+        element.parentElement?.closest(".block[data-aue-resource]") ||
+        element?.closest(".block[data-aue-resource]");
       if (blockEl) {
-        const block = blockEl.getAttribute('data-aue-model');
-        const index = element.getAttribute('data-slide-index');
+        const block = blockEl.getAttribute("data-aue-model");
+        const index = element.getAttribute("data-slide-index");
 
         switch (block) {
-          case 'accordion':
-            blockEl.querySelectorAll('details').forEach((details) => {
+          case "accordion":
+            blockEl.querySelectorAll("details").forEach((details) => {
               details.open = false;
             });
             element.open = true;
             break;
-          case 'carousel':
+          case "carousel":
             if (index) {
               showSlide(blockEl, index);
             }
             break;
-          case 'tabs':
+          case "tabs":
             if (element === block) {
               return;
             }
-            blockEl.querySelectorAll('[role=tabpanel]').forEach((panel) => {
-              panel.setAttribute('aria-hidden', true);
+            blockEl.querySelectorAll("[role=tabpanel]").forEach((panel) => {
+              panel.setAttribute("aria-hidden", true);
             });
-            element.setAttribute('aria-hidden', false);
-            blockEl.querySelector('.tabs-list').querySelectorAll('button').forEach((btn) => {
-              btn.setAttribute('aria-selected', false);
-            });
-            blockEl.querySelector(`[aria-controls=${element?.id}]`).setAttribute('aria-selected', true);
+            element.setAttribute("aria-hidden", false);
+            blockEl
+              .querySelector(".tabs-list")
+              .querySelectorAll("button")
+              .forEach((btn) => {
+                btn.setAttribute("aria-selected", false);
+              });
+            blockEl
+              .querySelector(`[aria-controls=${element?.id}]`)
+              .setAttribute("aria-selected", true);
             break;
           default:
             break;

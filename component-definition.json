@@ -232,6 +232,27 @@
           }
         },
         {
+          "title": "Technologies",
+          "id": "technologies",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div class=\"technologies\"><div><div><h4>Technologies</h4><h2>TECNOLOGIE DI STAMPA</h2><p>Il costante orientamento aziendale all'investimento e alla <strong>ricerca e sviluppo</strong> consente ad Acerbis di avere una visione a lungo termine e di garantire ai propri clienti <strong>affidabilità</strong> e <strong>qualità</strong> nel tempo.</p></div><div></div></div></div>"
+            }
+          },
+          "model": "technologies",
+          "filter": "technologies"
+        },
+        {
+          "title": "Technology Item",
+          "id": "technology-item",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/png\" srcset=\"\"><img loading=\"lazy\" alt=\"\"></picture></div><div><h3></h3><h4></h4><p></p><p><a href=\"\"></a></p></div></div>"
+            }
+          },
+          "model": "technology-item"
+        },
+        {
           "title": "Text Cards",
           "id": "text-cards",
           "plugins": {
