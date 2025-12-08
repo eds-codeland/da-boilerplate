@@ -165,7 +165,6 @@ div[class="hero-wrapper"] {
 	}
 }
 
-/* Adobe Universal Editor edit/preview mode overrides */
 .adobe-ue-edit .hero-wrapper,
 .adobe-ue-preview .hero-wrapper,
 .adobe-ue-edit .hero-wrapper:has(.with-text),
