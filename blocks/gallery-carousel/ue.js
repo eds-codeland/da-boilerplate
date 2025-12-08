@@ -1,6 +1,6 @@
 export default function initUE(block) {
   // Universal Editor event handlers for gallery-carousel block
-  
+
   block.addEventListener('ue:updated', () => {
     // Reinitialize Fancybox after content updates
     if (window.Fancybox) {

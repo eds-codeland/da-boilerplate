@@ -55,7 +55,7 @@ export default function decorate(block) {
       }
 
       if (imageUrl) {
-        imageCount++;
+        imageCount += 1;
         const item = document.createElement('div');
         item.classList.add('gallery-carousel-item');
 
