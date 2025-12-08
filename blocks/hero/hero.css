@@ -164,3 +164,14 @@ div[class="hero-wrapper"] {
 		width: 52px;
 	}
 }
+
+.adobe-ue-edit .hero-wrapper,
+.adobe-ue-preview .hero-wrapper {
+	height: 1000px;
+	min-height: 1000px;
+}
+
+.adobe-ue-edit .hero-main-image,
+.adobe-ue-preview .hero-main-image {
+	height: 1000px;
+}
