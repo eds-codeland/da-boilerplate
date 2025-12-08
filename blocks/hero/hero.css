@@ -165,13 +165,19 @@ div[class="hero-wrapper"] {
 	}
 }
 
+/* Adobe Universal Editor edit/preview mode overrides */
 .adobe-ue-edit .hero-wrapper,
-.adobe-ue-preview .hero-wrapper {
+.adobe-ue-preview .hero-wrapper,
+.adobe-ue-edit .hero-wrapper:has(.with-text),
+.adobe-ue-preview .hero-wrapper:has(.with-text) {
 	height: 1000px;
 	min-height: 1000px;
+	max-height: 1000px;
 }
 
 .adobe-ue-edit .hero-main-image,
-.adobe-ue-preview .hero-main-image {
+.adobe-ue-preview .hero-main-image,
+.adobe-ue-edit .hero.with-text .hero-main-image,
+.adobe-ue-preview .hero.with-text .hero-main-image {
 	height: 1000px;
 }
