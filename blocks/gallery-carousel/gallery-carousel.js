@@ -96,7 +96,11 @@ export default function decorate(block) {
 
   console.log('Gallery carousel - Total images added:', imageCount);
 
-  block.textContent = '';
+  // Hide original rows but keep them in DOM (for UE compatibility)
+  Array.from(block.querySelectorAll(':scope > div')).forEach((row) => {
+    row.style.display = 'none';
+  });
+
   block.append(container);
 
   // Load Fancybox if available

@@ -58,6 +58,10 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Centered",
+            "value": "centered"
           }
         ]
       }
@@ -156,6 +160,10 @@
           {
             "name": "Material Check",
             "value": "material-check"
+          },
+          {
+            "name": "Features",
+            "value": "features"
           }
         ]
       },
@@ -169,6 +177,39 @@
           "numberMin": 1,
           "numberMax": 6
         }
+      }
+    ]
+  },
+  {
+    "id": "feature-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(1)",
+        "label": "Sequence",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(2)",
+        "label": "Heading",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "div:nth-child(3)",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "div:nth-child(4)",
+        "label": "Caption",
+        "value": ""
       }
     ]
   },
@@ -232,6 +273,25 @@
     ]
   },
   {
+    "id": "pa6",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(1)>img[src]",
+        "label": "Side Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "div:nth-child(1)>div:nth-child(2)",
+        "label": "Statement",
+        "required": true
+      }
+    ]
+  },
+  {
     "id": "quote",
     "fields": [
       {
@@ -280,6 +340,41 @@
         "component": "richtext",
         "name": "div:nth-child(2)",
         "label": "Content",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "text-cards",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Text Cards options",
+        "description": "",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Features",
+            "value": "features"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "text-card",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "div:nth-child(1)",
+        "value": "",
+        "label": "Text",
         "valueType": "string"
       }
     ]
