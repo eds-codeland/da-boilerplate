@@ -145,6 +145,134 @@ const setupObservers = () => {
               }
             });
             break;
+          case "technologies":
+            // Handle technologies block transformations
+            if (addedElements.length > 0) {
+              const inner = mutation.target.querySelector(
+                ".technologies-inner"
+              );
+              if (inner) {
+                // Move block-level instrumentation to the inner container
+                const blockInstrumentation = [...mutation.removedNodes].find(
+                  (node) =>
+                    node.tagName === "DIV" &&
+                    node.attributes["data-aue-model"]?.value === "technologies"
+                );
+                if (blockInstrumentation) {
+                  const leftSection = inner.querySelector(".technologies-left");
+                  if (leftSection) {
+                    // Move block-level fields to left section elements
+                    const oldEyebrow = blockInstrumentation.querySelector(
+                      "div:nth-child(1)>div:nth-child(1)>h4:nth-child(1)"
+                    );
+                    const newEyebrow = leftSection.querySelector(
+                      ".technologies-eyebrow"
+                    );
+                    if (oldEyebrow && newEyebrow) {
+                      moveInstrumentation(oldEyebrow, newEyebrow);
+                    }
+
+                    const oldHeading = blockInstrumentation.querySelector(
+                      "div:nth-child(1)>div:nth-child(1)>h2:nth-child(2)"
+                    );
+                    const newHeading = leftSection.querySelector(
+                      ".technologies-heading"
+                    );
+                    if (oldHeading && newHeading) {
+                      moveInstrumentation(oldHeading, newHeading);
+                    }
+
+                    const oldDescription = blockInstrumentation.querySelector(
+                      "div:nth-child(1)>div:nth-child(1)>p:nth-child(3)"
+                    );
+                    const newDescription = leftSection.querySelector(
+                      ".technologies-description"
+                    );
+                    if (oldDescription && newDescription) {
+                      moveInstrumentation(oldDescription, newDescription);
+                    }
+                  }
+                }
+              }
+            }
+
+            // Handle technology-item transformations
+            removedElements.forEach((removed) => {
+              if (
+                removed.attributes &&
+                removed.attributes["data-aue-model"]?.value ===
+                  "technology-item"
+              ) {
+                const resourceAttr = removed.getAttribute("data-aue-resource");
+                if (resourceAttr) {
+                  const itemMatch = resourceAttr.match(/item-(\d+)/);
+                  if (itemMatch && itemMatch[1]) {
+                    const itemIndex = parseInt(itemMatch[1], 10);
+                    const cards = mutation.target.querySelectorAll(
+                      "a.technologies-card"
+                    );
+                    const targetCard = cards[itemIndex];
+
+                    if (targetCard) {
+                      moveInstrumentation(removed, targetCard);
+
+                      // Move image instrumentation
+                      const oldImg = removed.querySelector(
+                        "div:nth-child(1)>picture:nth-child(1)>img"
+                      );
+                      const newImg = targetCard.querySelector(
+                        ".technologies-card-image img"
+                      );
+                      if (oldImg && newImg) {
+                        moveInstrumentation(oldImg, newImg);
+                      }
+
+                      // Move title line 1 instrumentation
+                      const oldTitleLine1 = removed.querySelector(
+                        "div:nth-child(2)>h3:nth-child(1)"
+                      );
+                      const newTitleLine1 = targetCard.querySelector(
+                        ".technologies-card-title-line1"
+                      );
+                      if (oldTitleLine1 && newTitleLine1) {
+                        moveInstrumentation(oldTitleLine1, newTitleLine1);
+                      }
+
+                      // Move title line 2 instrumentation
+                      const oldTitleLine2 = removed.querySelector(
+                        "div:nth-child(2)>h4:nth-child(2)"
+                      );
+                      const newTitleLine2 = targetCard.querySelector(
+                        ".technologies-card-title-line2"
+                      );
+                      if (oldTitleLine2 && newTitleLine2) {
+                        moveInstrumentation(oldTitleLine2, newTitleLine2);
+                      }
+
+                      // Move description instrumentation
+                      const oldDesc = removed.querySelector(
+                        "div:nth-child(2)>p:nth-child(3)"
+                      );
+                      const newDesc = targetCard.querySelector(
+                        ".technologies-card-description"
+                      );
+                      if (oldDesc && newDesc) {
+                        moveInstrumentation(oldDesc, newDesc);
+                      }
+
+                      // Move link instrumentation to the card anchor itself
+                      const oldLink = removed.querySelector(
+                        "div:nth-child(2)>p:nth-child(4)>a:nth-child(1)"
+                      );
+                      if (oldLink) {
+                        moveInstrumentation(oldLink, targetCard);
+                      }
+                    }
+                  }
+                }
+              }
+            });
+            break;
           default:
             break;
         }
