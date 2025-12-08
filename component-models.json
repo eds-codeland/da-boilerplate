@@ -230,6 +230,59 @@
     ]
   },
   {
+    "id": "gallery-carousel",
+    "fields": [
+      {
+        "component": "image",
+        "name": ".gallery-carousel-item:nth-child(1) img",
+        "label": "Image 1",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": ".gallery-carousel-item:nth-child(1) img[alt]",
+        "label": "Image 1 Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "image",
+        "name": ".gallery-carousel-item:nth-child(2) img",
+        "label": "Image 2",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": ".gallery-carousel-item:nth-child(2) img[alt]",
+        "label": "Image 2 Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "image",
+        "name": ".gallery-carousel-item:nth-child(3) img",
+        "label": "Image 3",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": ".gallery-carousel-item:nth-child(3) img[alt]",
+        "label": "Image 3 Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "image",
+        "name": ".gallery-carousel-item:nth-child(4) img",
+        "label": "Image 4",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": ".gallery-carousel-item:nth-child(4) img[alt]",
+        "label": "Image 4 Alt Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {
