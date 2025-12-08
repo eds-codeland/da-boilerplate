@@ -234,53 +234,53 @@
     "fields": [
       {
         "component": "reference",
-        "name": "img[data-image-1][src]",
+        "name": "div:nth-child(1) img[src]",
         "label": "Image 1",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "text",
-        "name": "img[data-image-1][alt]",
+        "name": "div:nth-child(1) img[alt]",
         "label": "Image 1 Alt Text",
         "valueType": "string"
       },
       {
         "component": "reference",
-        "name": "img[data-image-2][src]",
+        "name": "div:nth-child(2) img[src]",
         "label": "Image 2",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "text",
-        "name": "img[data-image-2][alt]",
+        "name": "div:nth-child(2) img[alt]",
         "label": "Image 2 Alt Text",
         "valueType": "string"
       },
       {
         "component": "reference",
-        "name": "img[data-image-3][src]",
+        "name": "div:nth-child(3) img[src]",
         "label": "Image 3",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "text",
-        "name": "img[data-image-3][alt]",
+        "name": "div:nth-child(3) img[alt]",
         "label": "Image 3 Alt Text",
         "valueType": "string"
       },
       {
         "component": "reference",
-        "name": "img[data-image-4][src]",
+        "name": "div:nth-child(4) img[src]",
         "label": "Image 4",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "text",
-        "name": "img[data-image-4][alt]",
+        "name": "div:nth-child(4) img[alt]",
         "label": "Image 4 Alt Text",
         "valueType": "string"
       }
