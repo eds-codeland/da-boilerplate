@@ -6,7 +6,14 @@ import { moveInstrumentation } from '../../ue/scripts/ue-utils.js';
 
 let sectorsCarouselId = 0;
 
-const isUE = window.location.hostname.includes('ue.da.live');
+const isUE = window.location.hostname.includes('adobeaemcloud') 
+  || window.location.hostname.includes('hlx.live') 
+  || window.location.hostname.includes('ue.da.live')
+  || document.documentElement.classList.contains('adobe-ue-edit');
+
+// #region agent log
+console.log('[sectors-carousel] isUE detection:', { isUE, hostname: window.location.hostname, hasAdobeUeClass: document.documentElement.classList.contains('adobe-ue-edit') });
+// #endregion
 
 export function showSlide(block, slideIndex) {
   const slides = block.querySelectorAll('.sectors-slide');
@@ -82,8 +89,15 @@ function setupAutoAdvance(block) {
 function bindNavEvents(block) {
   const navLinks = block.querySelectorAll('.sectors-nav-link');
 
+  // #region agent log
+  console.log('[sectors-carousel] bindNavEvents:', { navLinkCount: navLinks.length, isUE });
+  // #endregion
+
   navLinks.forEach((link, idx) => {
     link.addEventListener('click', (e) => {
+      // #region agent log
+      console.log('[sectors-carousel] nav-click:', { idx, isUE, willPreventDefault: !isUE });
+      // #endregion
       if (!isUE) {
         e.preventDefault();
       }
@@ -106,6 +120,16 @@ export default async function decorate(block) {
 
   // Parse table rows (from Google Docs)
   const rows = block.querySelectorAll(':scope > div');
+
+  // #region agent log
+  const blockAttrs = [...block.attributes].map(a => ({name: a.name, value: a.value}));
+  const rowData = Array.from(rows).map((row, idx) => {
+    const cells = row.querySelectorAll(':scope > div');
+    const rowAttrs = [...row.attributes].map(a => ({name: a.name, value: a.value}));
+    return {rowIdx: idx, cellCount: cells.length, rowAttrs, hasDataAue: rowAttrs.some(a => a.name.startsWith('data-aue'))};
+  });
+  console.log('[sectors-carousel] decorate-entry:', { carouselId, rowCount: rows.length, blockAttrs, rowData, isUE });
+  // #endregion
   const slides = [];
 
   let startIdx = 0;
@@ -162,7 +186,14 @@ export default async function decorate(block) {
     }
   }
 
+  // #region agent log
+  console.log('[sectors-carousel] after-parse:', { slideCount: slides.length, slideTitles: slides.map(s => s.title), isUE });
+  // #endregion
+
   if (slides.length === 0) {
+    // #region agent log
+    console.log('[sectors-carousel] no-slides:', { rowCount: rows.length });
+    // #endregion
     return;
   }
 
@@ -295,6 +326,11 @@ export default async function decorate(block) {
 
   block.dataset.activeSlide = '0';
   bindNavEvents(block);
+  
+  // #region agent log
+  console.log('[sectors-carousel] decorate-end:', { isUE, willSetupAutoAdvance: !isUE, slidesCreated: block.querySelectorAll('.sectors-slide').length });
+  // #endregion
+  
   if (!isUE) {
     setupAutoAdvance(block);
   }
