@@ -75,6 +75,12 @@
     ]
   },
   {
+    "id": "technologies",
+    "components": [
+      "technology-card"
+    ]
+  },
+  {
     "id": "text-cards",
     "components": [
       "text-card"

@@ -1,0 +1,65 @@
+{
+  "definitions": [
+    {
+      "title": "Technologies",
+      "id": "technologies",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div class=\"technologies\"><div><div><div>Technologies</div><h2>TECNOLOGIE DI STAMPA2</h2><div></div></div><div><div></div></div></div></div>"
+        }
+      }
+    },
+    {
+      "title": "Technology Card",
+      "id": "technology-card",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<a class=\"technologies-card\"><div><picture>  <source type=\"image/webp\" srcset=\"\"> <source type=\"image/webp\" srcset=\"\">  <source srcset=\"\"> <img loading=\"lazy\" alt=\"\" src=\"\"></picture></div><div></div><div><div><span></span><span></span></div><div></div><div></div></div></a>"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "technologies",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(1)>div:nth-child(1)>div:nth-child(1)",
+          "label": "Heading"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "div:nth-child(1)>div:nth-child(1)>h2:nth-child(2)",
+          "label": "Title"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "div:nth-child(1)>div:nth-child(1)>div:nth-child(2)",
+          "label": "Description"
+        }
+      ]
+    },
+    {
+      "id": "technology-card",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]",
+          "label": "Image",
+          "multi": false
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "technologies",
+      "components": ["technology-card"]
+    }
+  ]
+}
