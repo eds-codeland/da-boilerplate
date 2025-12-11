@@ -177,7 +177,7 @@
           "plugins": {
             "da": {
               "name": "gallery-carousel",
-              "rows": 10,
+              "rows": 0,
               "columns": 1
             }
           }
