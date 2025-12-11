@@ -41,6 +41,10 @@
             {
               "name": "Features",
               "value": "features"
+            },
+            {
+              "name": "Advantages",
+              "value": "advantages"
             }
           ]
         }
