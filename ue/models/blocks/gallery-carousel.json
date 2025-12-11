@@ -5,9 +5,7 @@
       "id": "gallery-carousel",
       "plugins": {
         "da": {
-          "name": "gallery-carousel",
-          "rows": 0,
-          "columns": 1
+          "unsafeHTML": "<ul class=\"gallery-carousel-items\"><li><div class=\"gallery-carousel-slide-image\"><a class=\"gallery-carousel-link\" data-fancybox=\"gallery\"><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></a></div></li></ul>"
         }
       }
     },
@@ -16,9 +14,7 @@
       "id": "gallery-carousel-item",
       "plugins": {
         "da": {
-          "name": "gallery-carousel-item",
-          "rows": 1,
-          "columns": 1
+          "unsafeHTML": "<li><div class=\"gallery-carousel-slide-image\"><a class=\"gallery-carousel-link\" data-fancybox=\"gallery\"><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></a></div></li>"
         }
       }
     }
