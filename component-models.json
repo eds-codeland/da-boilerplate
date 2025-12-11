@@ -234,70 +234,70 @@
     "fields": [
       {
         "component": "reference",
-        "name": ".gallery-carousel-item:nth-child(1) img",
+        "name": ".gallery-carousel-items .gallery-carousel-item:nth-child(1) img",
         "label": "Image 1",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "reference",
-        "name": ".gallery-carousel-item:nth-child(2) img",
+        "name": ".gallery-carousel-items .gallery-carousel-item:nth-child(2) img",
         "label": "Image 2",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "reference",
-        "name": ".gallery-carousel-item:nth-child(3) img",
+        "name": ".gallery-carousel-items .gallery-carousel-item:nth-child(3) img",
         "label": "Image 3",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "reference",
-        "name": ".gallery-carousel-item:nth-child(4) img",
+        "name": ".gallery-carousel-items .gallery-carousel-item:nth-child(4) img",
         "label": "Image 4",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "reference",
-        "name": ".gallery-carousel-item:nth-child(5) img",
+        "name": ".gallery-carousel-items .gallery-carousel-item:nth-child(5) img",
         "label": "Image 5",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "reference",
-        "name": ".gallery-carousel-item:nth-child(6) img",
+        "name": ".gallery-carousel-items .gallery-carousel-item:nth-child(6) img",
         "label": "Image 6",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "reference",
-        "name": ".gallery-carousel-item:nth-child(7) img",
+        "name": ".gallery-carousel-items .gallery-carousel-item:nth-child(7) img",
         "label": "Image 7",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "reference",
-        "name": ".gallery-carousel-item:nth-child(8) img",
+        "name": ".gallery-carousel-items .gallery-carousel-item:nth-child(8) img",
         "label": "Image 8",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "reference",
-        "name": ".gallery-carousel-item:nth-child(9) img",
+        "name": ".gallery-carousel-items .gallery-carousel-item:nth-child(9) img",
         "label": "Image 9",
         "valueType": "string",
         "multi": false
       },
       {
         "component": "reference",
-        "name": ".gallery-carousel-item:nth-child(10) img",
+        "name": ".gallery-carousel-items .gallery-carousel-item:nth-child(10) img",
         "label": "Image 10",
         "valueType": "string",
         "multi": false

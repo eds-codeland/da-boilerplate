@@ -87,12 +87,9 @@ export default function decorate(block) {
     }
   });
 
-  // Hide original rows but keep them in DOM (for UE compatibility)
+  // Remove original rows from DOM (they're preserved in source for UE)
   Array.from(block.querySelectorAll(':scope > div')).forEach(row => {
-    row.style.display = 'none';
-    row.style.visibility = 'hidden';
-    row.style.height = '0';
-    row.style.overflow = 'hidden';
+    row.remove();
   });
 
   // IMPORTANT: Append instead of replacing to preserve DOM for UE
