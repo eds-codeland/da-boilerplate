@@ -87,20 +87,43 @@ export default function decorate(block) {
   // Hide original rows but keep them in DOM (for UE compatibility)
   Array.from(block.querySelectorAll(':scope > div')).forEach((row) => {
     row.style.display = 'none';
+    row.style.visibility = 'hidden';
+    row.style.height = '0';
+    row.style.overflow = 'hidden';
   });
 
   // IMPORTANT: Append instead of replacing to preserve DOM for UE
   block.append(container);
 
-  // Load Fancybox if available
+  // Load Fancybox if available - with proper initialization
   if (window.Fancybox) {
+    // Ensure Fancybox is properly bound with all options
     window.Fancybox.bind('[data-fancybox="gallery"]', {
       on: {
         reveal: () => {
           // Optional: add custom behavior
         },
       },
+      autoSize: true,
+      width: 1200,
+      height: 800,
     });
+  } else {
+    // Fallback: try to bind after a short delay if Fancybox isn't ready yet
+    setTimeout(() => {
+      if (window.Fancybox) {
+        window.Fancybox.bind('[data-fancybox="gallery"]', {
+          on: {
+            reveal: () => {
+              // Optional: add custom behavior
+            },
+          },
+          autoSize: true,
+          width: 1200,
+          height: 800,
+        });
+      }
+    }, 100);
   }
 
   // Initialize UE event handlers
