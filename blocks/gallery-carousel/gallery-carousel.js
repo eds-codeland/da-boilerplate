@@ -6,6 +6,11 @@ export default function decorate(block) {
   // Set UE model attribute for Universal Editor
   block.setAttribute('data-aue-model', 'gallery-carousel');
 
+  // Idempotency: if already decorated, do nothing
+  if (block.querySelector(':scope > .gallery-carousel-items')) {
+    return;
+  }
+
   const rows = Array.from(block.querySelectorAll(':scope > div'));
 
   const container = document.createElement('div');
@@ -13,84 +18,59 @@ export default function decorate(block) {
 
   let imageCount = 0;
 
-  // Process each row as a gallery item (skip first row which is the block name)
+  // Process each row as a gallery item by MOVING existing media into items
   rows.forEach(row => {
     const cells = Array.from(row.querySelectorAll(':scope > div'));
 
     if (cells.length >= 1) {
-      let imageUrl = null;
-      let caption = '';
-
       const firstCell = cells[0];
       const secondCell = cells[1];
 
-      // Check first cell for image
-      let img = firstCell.querySelector('img');
-      if (img) {
-        imageUrl = img.src;
-        caption = img.alt || '';
+      // Prefer a <picture> if present, else <img>
+      const picture = firstCell.querySelector('picture') || secondCell?.querySelector('picture');
+      let img = picture ? picture.querySelector('img') : (firstCell.querySelector('img') || secondCell?.querySelector('img'));
+      if (!img) {
+        return;
       }
 
-      // Check second cell for image (pasted images)
-      if (!imageUrl && secondCell) {
-        img = secondCell.querySelector('img');
-        if (img) {
-          imageUrl = img.src;
-          caption = img.alt || '';
+      // Determine href: prefer an explicit link in second cell, else the image src
+      const linkEl = secondCell?.querySelector('a');
+      const href = (linkEl && linkEl.href) ? linkEl.href : img.src;
+
+      imageCount += 1;
+      const item = document.createElement('div');
+      item.classList.add('gallery-carousel-item');
+
+      // Create gallery link with lightbox
+      const galleryLink = document.createElement('a');
+      galleryLink.href = href;
+      galleryLink.classList.add('gallery-carousel-link');
+      galleryLink.setAttribute('data-fancybox', 'gallery');
+      galleryLink.setAttribute('data-caption', '');
+
+      // Move media node into the link, preserving UE instrumentation
+      if (picture) {
+        galleryLink.append(picture);
+        const movedImg = picture.querySelector('img');
+        if (movedImg) {
+          movedImg.classList.add('gallery-carousel-image');
+          movedImg.loading = 'lazy';
         }
+      } else if (img) {
+        galleryLink.append(img);
+        img.classList.add('gallery-carousel-image');
+        img.loading = 'lazy';
       }
 
-      // Check second cell for link (URL)
-      const link = secondCell?.querySelector('a');
-      if (link && !imageUrl) {
-        imageUrl = link.href;
-        caption = link.textContent || '';
-      } else if (link && imageUrl) {
-        imageUrl = link.href;
-      }
+      item.append(galleryLink);
+      container.append(item);
 
-      // Check for text content in second cell
-      if (!imageUrl && secondCell) {
-        const text = secondCell.textContent.trim();
-        if (text.startsWith('http')) {
-          imageUrl = text;
-        }
-      }
-
-      if (imageUrl) {
-        imageCount += 1;
-        const item = document.createElement('div');
-        item.classList.add('gallery-carousel-item');
-
-        // Create gallery link with lightbox
-        const galleryLink = document.createElement('a');
-        galleryLink.href = imageUrl;
-        galleryLink.classList.add('gallery-carousel-link');
-        galleryLink.setAttribute('data-fancybox', 'gallery');
-        // Don't show URL as caption - leave it empty
-        galleryLink.setAttribute('data-caption', '');
-
-        // Create image
-        const imgElement = document.createElement('img');
-        imgElement.src = imageUrl;
-        imgElement.alt = caption;
-        imgElement.classList.add('gallery-carousel-image');
-        imgElement.loading = 'lazy';
-        // Add data attributes for UE targeting
-        imgElement.setAttribute(`data-image-${imageCount}`, imageUrl);
-        imgElement.setAttribute(`data-alt-${imageCount}`, caption);
-
-        galleryLink.append(imgElement);
-        item.append(galleryLink);
-        container.append(item);
-      }
+      // Remove the now-empty row from the DOM to avoid duplication
+      row.remove();
     }
   });
 
-  // Remove original rows from DOM (they're preserved in source for UE)
-  Array.from(block.querySelectorAll(':scope > div')).forEach(row => {
-    row.remove();
-  });
+  // No need to hide rows; rows are moved/removed above to prevent duplication.
 
   // IMPORTANT: Append instead of replacing to preserve DOM for UE
   block.append(container);

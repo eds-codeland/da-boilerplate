@@ -96,16 +96,40 @@ const setupObservers = () => {
             });
             break;
           case 'gallery-carousel':
-            // Handle gallery-carousel item mutations
+            // Handle gallery-carousel mutations
+            // 1) When the block itself mutates (container added, original rows removed)
+            if (mutation.target.classList.contains('gallery-carousel')) {
+              const addedContainer = [...addedElements].find((node) => node.nodeType === 1 && node.classList?.contains('gallery-carousel-items'));
+              if (addedContainer) {
+                const addedItems = addedContainer.querySelectorAll('div.gallery-carousel-item');
+                // original rows that were removed from the block (exclude the items container)
+                const removedRows = [...removedElements].filter((node) => node.nodeType === 1 && node.tagName === 'DIV' && !node.classList?.contains('gallery-carousel-items'));
+
+                if (addedItems.length > 0 && removedRows.length > 0) {
+                  removedRows.forEach((removedItem, index) => {
+                    if (index < addedItems.length) {
+                      moveInstrumentation(removedItem, addedItems[index]);
+                      // Move instrumentation from previous img to the new img
+                      const removedImg = removedItem.querySelector('img');
+                      const addedImg = addedItems[index].querySelector('img');
+                      if (removedImg && addedImg) {
+                        moveInstrumentation(removedImg, addedImg);
+                      }
+                    }
+                  });
+                }
+              }
+            }
+
+            // 2) When the items container mutates (items replaced)
             if (mutation.target.classList.contains('gallery-carousel-items')) {
               const addedItems = [...addedElements].filter((node) => node.classList?.contains('gallery-carousel-item'));
               const removedItems = [...removedElements].filter((node) => node.classList?.contains('gallery-carousel-item'));
-              
+
               if (addedItems.length > 0 && removedItems.length > 0) {
                 removedItems.forEach((removedItem, index) => {
                   if (index < addedItems.length) {
                     moveInstrumentation(removedItem, addedItems[index]);
-                    // Also move instrumentation from img elements
                     const removedImg = removedItem.querySelector('img');
                     const addedImg = addedItems[index].querySelector('img');
                     if (removedImg && addedImg) {
