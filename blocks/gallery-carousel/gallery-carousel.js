@@ -19,25 +19,11 @@ export default function decorate(block) {
 
   let slideIndex = 0;
 
-  // Process each row as a gallery item by MOVING existing media into items
+  // Process each row as a gallery item, matching carousel's createSlide pattern
   rows.forEach(row => {
     const cells = Array.from(row.querySelectorAll(':scope > div'));
 
     if (cells.length >= 1) {
-      const firstCell = cells[0];
-      const secondCell = cells[1];
-
-      // Prefer a <picture> if present, else <img>
-      const picture = firstCell.querySelector('picture') || secondCell?.querySelector('picture');
-      let img = picture ? picture.querySelector('img') : (firstCell.querySelector('img') || secondCell?.querySelector('img'));
-      if (!img) {
-        return;
-      }
-
-      // Determine href: prefer an explicit link in second cell, else the image src
-      const linkEl = secondCell?.querySelector('a');
-      const href = (linkEl && linkEl.href) ? linkEl.href : img.src;
-
       // Create li item matching carousel-slide structure
       const item = document.createElement('li');
       item.classList.add('gallery-carousel-item');
@@ -52,35 +38,52 @@ export default function decorate(block) {
       }
       item.dataset.slideIndex = slideIndex;
 
-      // Create image container div matching carousel-slide-image structure
-      const imageContainer = document.createElement('div');
-      imageContainer.classList.add('gallery-carousel-slide-image');
-
-      // Create gallery link with lightbox
-      const galleryLink = document.createElement('a');
-      galleryLink.href = href;
-      galleryLink.classList.add('gallery-carousel-link');
-      galleryLink.setAttribute('data-fancybox', 'gallery');
-      galleryLink.setAttribute('data-caption', '');
-
-      // Move media node into the link, preserving UE instrumentation
-      if (picture) {
-        galleryLink.append(picture);
-        const movedImg = picture.querySelector('img');
-        if (movedImg) {
-          movedImg.classList.add('gallery-carousel-image');
-          movedImg.loading = 'lazy';
+      // Append original columns directly to item, matching carousel pattern
+      cells.forEach((column, colIdx) => {
+        column.classList.add(`gallery-carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
+        
+        // For image column, wrap picture/img in gallery link for lightbox
+        if (colIdx === 0) {
+          const picture = column.querySelector('picture');
+          const img = picture ? picture.querySelector('img') : column.querySelector('img');
+          
+          if (picture || img) {
+            // Determine href: prefer explicit link in second cell, else image src
+            const secondCell = cells[1];
+            const linkEl = secondCell?.querySelector('a');
+            const href = (linkEl && linkEl.href) ? (img?.src || '') : (img?.src || '');
+            
+            // Create gallery link wrapper
+            const galleryLink = document.createElement('a');
+            galleryLink.href = href;
+            galleryLink.classList.add('gallery-carousel-link');
+            galleryLink.setAttribute('data-fancybox', 'gallery');
+            galleryLink.setAttribute('data-caption', '');
+            
+            // Move picture/img into gallery link
+            if (picture) {
+              galleryLink.append(picture);
+              const movedImg = picture.querySelector('img');
+              if (movedImg) {
+                movedImg.classList.add('gallery-carousel-image');
+                movedImg.loading = 'lazy';
+              }
+            } else if (img) {
+              galleryLink.append(img);
+              img.classList.add('gallery-carousel-image');
+              img.loading = 'lazy';
+            }
+            
+            // Clear column and append gallery link
+            column.innerHTML = '';
+            column.append(galleryLink);
+          }
         }
-      } else if (img) {
-        galleryLink.append(img);
-        img.classList.add('gallery-carousel-image');
-        img.loading = 'lazy';
-      }
+        
+        item.append(column);
+      });
 
-      imageContainer.append(galleryLink);
-      item.append(imageContainer);
       slidesWrapper.append(item);
-
       slideIndex += 1;
 
       // Remove the now-empty row from the DOM to avoid duplication
