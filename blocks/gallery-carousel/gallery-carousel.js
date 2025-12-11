@@ -1,7 +1,7 @@
 import initUE from './ue.js';
 
 export default function decorate(block) {
-  // Gallery Carousel component: 4-column image grid with lightbox
+  // Gallery Carousel component: image grid with lightbox, matching carousel structure
 
   // Set UE model attribute for Universal Editor
   block.setAttribute('data-aue-model', 'gallery-carousel');
@@ -13,10 +13,11 @@ export default function decorate(block) {
 
   const rows = Array.from(block.querySelectorAll(':scope > div'));
 
-  const container = document.createElement('div');
-  container.classList.add('gallery-carousel-items');
+  // Create ul wrapper matching carousel structure
+  const slidesWrapper = document.createElement('ul');
+  slidesWrapper.classList.add('gallery-carousel-items');
 
-  let imageCount = 0;
+  let slideIndex = 0;
 
   // Process each row as a gallery item by MOVING existing media into items
   rows.forEach(row => {
@@ -37,11 +38,12 @@ export default function decorate(block) {
       const linkEl = secondCell?.querySelector('a');
       const href = (linkEl && linkEl.href) ? linkEl.href : img.src;
 
-      imageCount += 1;
-      const item = document.createElement('div');
+      // Create li item matching carousel-slide structure
+      const item = document.createElement('li');
       item.classList.add('gallery-carousel-item');
       item.setAttribute('data-aue-model', 'gallery-carousel-item');
-      item.setAttribute('data-aue-resource', `gallery-carousel/item-${imageCount}`);
+      item.setAttribute('data-aue-resource', `gallery-carousel/item-${slideIndex}`);
+      item.dataset.slideIndex = slideIndex;
 
       // Create gallery link with lightbox
       const galleryLink = document.createElement('a');
@@ -65,17 +67,17 @@ export default function decorate(block) {
       }
 
       item.append(galleryLink);
-      container.append(item);
+      slidesWrapper.append(item);
+
+      slideIndex += 1;
 
       // Remove the now-empty row from the DOM to avoid duplication
       row.remove();
     }
   });
 
-  // No need to hide rows; rows are moved/removed above to prevent duplication.
-
-  // IMPORTANT: Append instead of replacing to preserve DOM for UE
-  block.append(container);
+  // Prepend ul wrapper to block, matching carousel structure
+  block.prepend(slidesWrapper);
 
   // Load Fancybox if available - with proper initialization
   const initFancybox = () => {

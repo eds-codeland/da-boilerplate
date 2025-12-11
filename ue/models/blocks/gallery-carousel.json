@@ -30,14 +30,14 @@
         {
           "component": "reference",
           "valueType": "string",
-          "name": "a>img[src]",
+          "name": "a>picture>img[src]",
           "label": "Image",
           "multi": false
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "a>img[alt]",
+          "name": "a>picture>img[alt]",
           "label": "Image Alt",
           "multi": false
         }
