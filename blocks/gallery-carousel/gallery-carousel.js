@@ -11,7 +11,7 @@ export default function decorate(block) {
   let imageCount = 0;
 
   // Process each row as a gallery item (skip first row which is the block name)
-  rows.forEach((row) => {
+  rows.forEach(row => {
     const cells = Array.from(row.querySelectorAll(':scope > div'));
 
     if (cells.length >= 1) {
@@ -85,7 +85,7 @@ export default function decorate(block) {
   });
 
   // Hide original rows but keep them in DOM (for UE compatibility)
-  Array.from(block.querySelectorAll(':scope > div')).forEach((row) => {
+  Array.from(block.querySelectorAll(':scope > div')).forEach(row => {
     row.style.display = 'none';
     row.style.visibility = 'hidden';
     row.style.height = '0';
