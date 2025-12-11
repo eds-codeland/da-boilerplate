@@ -235,14 +235,14 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "div:nth-child(1)>a>picture>img:nth-child(3)[src]",
+        "name": "div:nth-child(1) picture img:nth-child(3)[src]",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "div:nth-child(1)>a>picture>img:nth-child(3)[alt]",
+        "name": "div:nth-child(1) picture img:nth-child(3)[alt]",
         "label": "Image Alt",
         "multi": false
       }
