@@ -42,7 +42,14 @@ export default function decorate(block) {
       const item = document.createElement('li');
       item.classList.add('gallery-carousel-item');
       item.setAttribute('data-aue-model', 'gallery-carousel-item');
-      item.setAttribute('data-aue-resource', `gallery-carousel/item-${slideIndex}`);
+      
+      // Transfer UE instrumentation from original row if present
+      const rowResource = row.getAttribute('data-aue-resource');
+      if (rowResource) {
+        item.setAttribute('data-aue-resource', rowResource);
+      } else {
+        item.setAttribute('data-aue-resource', `gallery-carousel/item-${slideIndex}`);
+      }
       item.dataset.slideIndex = slideIndex;
 
       // Create image container div matching carousel-slide-image structure
