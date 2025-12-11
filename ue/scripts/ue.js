@@ -14,7 +14,7 @@ import { showSlide } from '../../blocks/carousel/carousel.js';
 import { moveInstrumentation } from './ue-utils.js';
 
 const setupObservers = () => {
-  const mutatingBlocks = document.querySelectorAll('div.text-cards,div.cards, div.carousel, div.accordion, div.features');
+  const mutatingBlocks = document.querySelectorAll('div.text-cards,div.cards, div.carousel, div.accordion, div.features, div.gallery-carousel');
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList' && mutation.target.tagName === 'DIV') {
@@ -94,6 +94,27 @@ const setupObservers = () => {
                 }
               }
             });
+            break;
+          case 'gallery-carousel':
+            // Handle gallery-carousel item mutations
+            if (mutation.target.classList.contains('gallery-carousel-items')) {
+              const addedItems = [...addedElements].filter((node) => node.classList?.contains('gallery-carousel-item'));
+              const removedItems = [...removedElements].filter((node) => node.classList?.contains('gallery-carousel-item'));
+              
+              if (addedItems.length > 0 && removedItems.length > 0) {
+                removedItems.forEach((removedItem, index) => {
+                  if (index < addedItems.length) {
+                    moveInstrumentation(removedItem, addedItems[index]);
+                    // Also move instrumentation from img elements
+                    const removedImg = removedItem.querySelector('img');
+                    const addedImg = addedItems[index].querySelector('img');
+                    if (removedImg && addedImg) {
+                      moveInstrumentation(removedImg, addedImg);
+                    }
+                  }
+                });
+              }
+            }
             break;
           default:
             break;
