@@ -3,6 +3,9 @@ import initUE from './ue.js';
 export default function decorate(block) {
   // Gallery Carousel component: 4-column image grid with lightbox
 
+  // Set UE model attribute for Universal Editor
+  block.setAttribute('data-aue-model', 'gallery-carousel');
+
   const rows = Array.from(block.querySelectorAll(':scope > div'));
 
   const container = document.createElement('div');
