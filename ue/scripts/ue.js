@@ -97,11 +97,11 @@ const setupObservers = () => {
             break;
           case 'gallery-carousel':
             // Handle gallery-carousel mutations
-            // 1) When the block itself mutates (container added, original rows removed)
+            // 1) When the block itself mutates (ul container added, original rows removed)
             if (mutation.target.classList.contains('gallery-carousel')) {
               const addedContainer = [...addedElements].find((node) => node.nodeType === 1 && node.classList?.contains('gallery-carousel-items'));
               if (addedContainer) {
-                const addedItems = addedContainer.querySelectorAll('div.gallery-carousel-item');
+                const addedItems = addedContainer.querySelectorAll('li.gallery-carousel-item');
                 // original rows that were removed from the block (exclude the items container)
                 const removedRows = [...removedElements].filter((node) => node.nodeType === 1 && node.tagName === 'DIV' && !node.classList?.contains('gallery-carousel-items'));
 
@@ -123,8 +123,8 @@ const setupObservers = () => {
 
             // 2) When the items container mutates (items replaced)
             if (mutation.target.classList.contains('gallery-carousel-items')) {
-              const addedItems = [...addedElements].filter((node) => node.classList?.contains('gallery-carousel-item'));
-              const removedItems = [...removedElements].filter((node) => node.classList?.contains('gallery-carousel-item'));
+              const addedItems = [...addedElements].filter((node) => node.tagName === 'LI' && node.classList?.contains('gallery-carousel-item'));
+              const removedItems = [...removedElements].filter((node) => node.tagName === 'LI' && node.classList?.contains('gallery-carousel-item'));
 
               if (addedItems.length > 0 && removedItems.length > 0) {
                 removedItems.forEach((removedItem, index) => {
