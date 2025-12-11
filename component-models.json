@@ -235,14 +235,14 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "a>picture>img[src]",
+        "name": "div.gallery-carousel-slide-image>a>picture>img[src]",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "a>picture>img[alt]",
+        "name": "div.gallery-carousel-slide-image>a>picture>img[alt]",
         "label": "Image Alt",
         "multi": false
       }

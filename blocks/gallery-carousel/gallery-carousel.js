@@ -45,6 +45,10 @@ export default function decorate(block) {
       item.setAttribute('data-aue-resource', `gallery-carousel/item-${slideIndex}`);
       item.dataset.slideIndex = slideIndex;
 
+      // Create image container div matching carousel-slide-image structure
+      const imageContainer = document.createElement('div');
+      imageContainer.classList.add('gallery-carousel-slide-image');
+
       // Create gallery link with lightbox
       const galleryLink = document.createElement('a');
       galleryLink.href = href;
@@ -66,7 +70,8 @@ export default function decorate(block) {
         img.loading = 'lazy';
       }
 
-      item.append(galleryLink);
+      imageContainer.append(galleryLink);
+      item.append(imageContainer);
       slidesWrapper.append(item);
 
       slideIndex += 1;
