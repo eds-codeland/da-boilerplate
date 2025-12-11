@@ -11,10 +11,11 @@
  */
 
 import { showSlide } from '../../blocks/carousel/carousel.js';
+import { showSlide as showSectorsSlide } from '../../blocks/sectors-carousel/sectors-carousel.js';
 import { moveInstrumentation } from './ue-utils.js';
 
 const setupObservers = () => {
-  const mutatingBlocks = document.querySelectorAll('div.text-cards,div.cards, div.carousel, div.accordion, div.features, div.hero');
+  const mutatingBlocks = document.querySelectorAll('div.text-cards,div.cards, div.carousel, div.accordion, div.features, div.hero, div.sectors-carousel');
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList' && mutation.target.tagName === 'DIV') {
@@ -95,6 +96,56 @@ const setupObservers = () => {
               }
             });
             break;
+          case 'sectors-carousel':
+            if (removedElements.length === 1 && removedElements[0].attributes['data-aue-model']?.value === 'sectors-carousel-item') {
+              const resourceAttr = removedElements[0].getAttribute('data-aue-resource');
+              if (resourceAttr) {
+                const itemMatch = resourceAttr.match(/item-(\d+)/);
+                if (itemMatch && itemMatch[1]) {
+                  const slideIndex = parseInt(itemMatch[1], 10);
+                  const slides = mutation.target.querySelectorAll('.sectors-slide');
+                  const targetSlide = Array.from(slides).find((slide) => parseInt(slide.getAttribute('data-slide-index'), 10) === slideIndex);
+                  if (targetSlide) {
+                    moveInstrumentation(removedElements[0], targetSlide);
+                    // Move instrumentation from cells to corresponding elements
+                    const bgCell = removedElements[0].querySelector('div:nth-child(1)');
+                    const titleCell = removedElements[0].querySelector('div:nth-child(2)');
+                    const descCell = removedElements[0].querySelector('div:nth-child(3)');
+                    const linkCell = removedElements[0].querySelector('div:nth-child(4)');
+                    
+                    if (bgCell) {
+                      const bgImg = bgCell.querySelector('img');
+                      const targetBgImg = targetSlide.querySelector('.sectors-slide-bg img');
+                      if (bgImg && targetBgImg) {
+                        moveInstrumentation(bgImg, targetBgImg);
+                      }
+                    }
+                    if (titleCell) {
+                      const targetTitle = targetSlide.querySelector('.sectors-slide-title');
+                      if (targetTitle) {
+                        moveInstrumentation(titleCell, targetTitle);
+                      }
+                    }
+                    if (descCell) {
+                      const targetDesc = targetSlide.querySelector('.sectors-slide-text p');
+                      if (targetDesc) {
+                        moveInstrumentation(descCell, targetDesc);
+                      }
+                    }
+                    if (linkCell) {
+                      const originalLink = linkCell.querySelector('a');
+                      const targetLink = targetSlide.querySelector('.sectors-slide-link');
+                      if (originalLink && targetLink) {
+                        moveInstrumentation(originalLink, targetLink);
+                      } else if (targetLink) {
+                        moveInstrumentation(linkCell, targetLink);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            break;
           default:
             break;
         }
@@ -146,6 +197,11 @@ const setupUEEventHandlers = () => {
           case 'carousel':
             if (index) {
               showSlide(blockEl, index);
+            }
+            break;
+          case 'sectors-carousel':
+            if (index) {
+              showSectorsSlide(blockEl, Number.parseInt(index, 10));
             }
             break;
           case 'tabs':

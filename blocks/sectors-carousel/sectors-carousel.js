@@ -2,9 +2,13 @@
  * Sectors Carousel Block
  */
 
+import { moveInstrumentation } from '../../ue/scripts/ue-utils.js';
+
 let sectorsCarouselId = 0;
 
-function showSlide(block, slideIndex) {
+const isUE = window.location.hostname.includes('ue.da.live');
+
+export function showSlide(block, slideIndex) {
   const slides = block.querySelectorAll('.sectors-slide');
   const navLinks = block.querySelectorAll('.sectors-nav-link');
 
@@ -80,10 +84,12 @@ function bindNavEvents(block) {
 
   navLinks.forEach((link, idx) => {
     link.addEventListener('click', (e) => {
-      e.preventDefault();
+      if (!isUE) {
+        e.preventDefault();
+      }
       showSlide(block, idx);
-      // Reset the auto-advance timer when user clicks
-      if (block.resetAutoAdvance) {
+      // Reset the auto-advance timer when user clicks (only if not in UE)
+      if (!isUE && block.resetAutoAdvance) {
         block.resetAutoAdvance();
       }
     });
@@ -123,6 +129,8 @@ export default async function decorate(block) {
       description: '',
       link: '',
     };
+
+    slideData.cells = Array.from(cells);
 
     // Column 1: Background image
     const bgCell = cells[0];
@@ -192,6 +200,7 @@ export default async function decorate(block) {
   slides.forEach((slide, idx) => {
     const slideEl = document.createElement('div');
     slideEl.classList.add('sectors-slide');
+    slideEl.setAttribute('data-slide-index', idx);
     if (idx === 0) {
       slideEl.classList.add('active');
     }
@@ -202,11 +211,21 @@ export default async function decorate(block) {
     const bgWrapper = document.createElement('div');
     bgWrapper.classList.add('sectors-slide-bg');
     if (slide.backgroundImage) {
+      let imageElement;
       if (slide.backgroundImage.tagName === 'PICTURE') {
-        bgWrapper.append(slide.backgroundImage.cloneNode(true));
+        imageElement = slide.backgroundImage.cloneNode(true);
+        bgWrapper.append(imageElement);
+        const originalImg = slide.backgroundImage.querySelector('img');
+        const clonedImg = imageElement.querySelector('img');
+        if (originalImg && clonedImg && isUE) {
+          moveInstrumentation(originalImg, clonedImg);
+        }
       } else {
-        const img = slide.backgroundImage.cloneNode(true);
-        bgWrapper.append(img);
+        imageElement = slide.backgroundImage.cloneNode(true);
+        bgWrapper.append(imageElement);
+        if (isUE) {
+          moveInstrumentation(slide.backgroundImage, imageElement);
+        }
       }
     }
     slideEl.append(bgWrapper);
@@ -221,6 +240,9 @@ export default async function decorate(block) {
     const title = document.createElement('h3');
     title.classList.add('sectors-slide-title');
     title.textContent = slide.title;
+    if (isUE && slide.cells && slide.cells[1]) {
+      moveInstrumentation(slide.cells[1], title);
+    }
     caption.append(title);
 
     const textWrapper = document.createElement('div');
@@ -228,6 +250,9 @@ export default async function decorate(block) {
 
     const description = document.createElement('p');
     description.textContent = slide.description;
+    if (isUE && slide.cells && slide.cells[2]) {
+      moveInstrumentation(slide.cells[2], description);
+    }
     textWrapper.append(description);
 
     if (slide.link) {
@@ -235,6 +260,14 @@ export default async function decorate(block) {
       link.href = slide.link;
       link.classList.add('sectors-slide-link');
       link.setAttribute('aria-label', `Learn more about ${slide.title}`);
+      if (isUE && slide.cells && slide.cells[3]) {
+        const originalLink = slide.cells[3].querySelector('a');
+        if (originalLink) {
+          moveInstrumentation(originalLink, link);
+        } else {
+          moveInstrumentation(slide.cells[3], link);
+        }
+      }
 
       const icon = document.createElement('span');
       icon.classList.add('icon', 'icon-circle-arrow');
@@ -262,5 +295,7 @@ export default async function decorate(block) {
 
   block.dataset.activeSlide = '0';
   bindNavEvents(block);
-  setupAutoAdvance(block);
+  if (!isUE) {
+    setupAutoAdvance(block);
+  }
 }
