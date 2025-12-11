@@ -3,7 +3,7 @@
     padding: 60px 24px;
     width: 100%;
     box-sizing: border-box;
-    overflow-x: auto;
+    overflow: hidden;
 }
 
 .gallery-carousel-items {

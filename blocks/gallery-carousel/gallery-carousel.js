@@ -1,15 +1,9 @@
+import initUE from './ue.js';
+
 export default function decorate(block) {
   // Gallery Carousel component: 4-column image grid with lightbox
 
   const rows = Array.from(block.querySelectorAll(':scope > div'));
-  console.warn('🎯 GALLERY CAROUSEL DEBUG - Total rows:', rows.length);
-
-  // Log all rows for debugging
-  rows.forEach((row, idx) => {
-    const cells = Array.from(row.querySelectorAll(':scope > div'));
-    const cellTexts = cells.map(cell => cell.textContent.trim().substring(0, 50)).join(' | ');
-    console.warn(`🎯 Row ${idx}: ${cellTexts}`);
-  });
 
   const container = document.createElement('div');
   container.classList.add('gallery-carousel-items');
@@ -17,9 +11,8 @@ export default function decorate(block) {
   let imageCount = 0;
 
   // Process each row as a gallery item (skip first row which is the block name)
-  rows.forEach((row, idx) => {
+  rows.forEach((row) => {
     const cells = Array.from(row.querySelectorAll(':scope > div'));
-    console.log(`Row ${idx + 1} - Cells:`, cells.length);
 
     if (cells.length >= 1) {
       let imageUrl = null;
@@ -33,7 +26,6 @@ export default function decorate(block) {
       if (img) {
         imageUrl = img.src;
         caption = img.alt || '';
-        console.log(`Row ${idx + 1} - Found image in first cell:`, imageUrl);
       }
 
       // Check second cell for image (pasted images)
@@ -42,7 +34,6 @@ export default function decorate(block) {
         if (img) {
           imageUrl = img.src;
           caption = img.alt || '';
-          console.log(`Row ${idx + 1} - Found image in second cell:`, imageUrl);
         }
       }
 
@@ -51,10 +42,8 @@ export default function decorate(block) {
       if (link && !imageUrl) {
         imageUrl = link.href;
         caption = link.textContent || '';
-        console.log(`Row ${idx + 1} - Found link in second cell:`, imageUrl);
       } else if (link && imageUrl) {
         imageUrl = link.href;
-        console.log(`Row ${idx + 1} - Using link as full-size image:`, imageUrl);
       }
 
       // Check for text content in second cell
@@ -62,12 +51,11 @@ export default function decorate(block) {
         const text = secondCell.textContent.trim();
         if (text.startsWith('http')) {
           imageUrl = text;
-          console.log(`Row ${idx + 1} - Found URL in text:`, imageUrl);
         }
       }
 
       if (imageUrl) {
-        imageCount++;
+        imageCount += 1;
         const item = document.createElement('div');
         item.classList.add('gallery-carousel-item');
 
@@ -82,35 +70,39 @@ export default function decorate(block) {
         // Create image
         const imgElement = document.createElement('img');
         imgElement.src = imageUrl;
-        imgElement.alt = '';
+        imgElement.alt = caption;
         imgElement.classList.add('gallery-carousel-image');
+        imgElement.loading = 'lazy';
+        // Add data attributes for UE targeting
+        imgElement.setAttribute(`data-image-${imageCount}`, imageUrl);
+        imgElement.setAttribute(`data-alt-${imageCount}`, caption);
 
         galleryLink.append(imgElement);
         item.append(galleryLink);
         container.append(item);
-
-        console.log(`Image ${imageCount} added:`, imageUrl);
       }
     }
   });
-
-  console.log('Gallery carousel - Total images added:', imageCount);
 
   // Hide original rows but keep them in DOM (for UE compatibility)
   Array.from(block.querySelectorAll(':scope > div')).forEach((row) => {
     row.style.display = 'none';
   });
 
+  // IMPORTANT: Append instead of replacing to preserve DOM for UE
   block.append(container);
 
   // Load Fancybox if available
   if (window.Fancybox) {
     window.Fancybox.bind('[data-fancybox="gallery"]', {
       on: {
-        reveal: (fancybox, slide) => {
+        reveal: () => {
           // Optional: add custom behavior
-        }
-      }
+        },
+      },
     });
   }
+
+  // Initialize UE event handlers
+  initUE(block);
 }
