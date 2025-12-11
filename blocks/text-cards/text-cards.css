@@ -16,12 +16,6 @@
   margin: 16px;
 }
 
-.text-cards > ul > li img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-}
-
 .text-cards.features {
     > ul {
         grid-template-columns: repeat(3, 1fr);
