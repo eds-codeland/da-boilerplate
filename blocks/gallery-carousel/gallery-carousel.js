@@ -96,34 +96,40 @@ export default function decorate(block) {
   block.append(container);
 
   // Load Fancybox if available - with proper initialization
-  if (window.Fancybox) {
-    // Ensure Fancybox is properly bound with all options
-    window.Fancybox.bind('[data-fancybox="gallery"]', {
-      on: {
-        reveal: () => {
-          // Optional: add custom behavior
-        },
-      },
-      autoSize: true,
-      width: 1200,
-      height: 800,
-    });
-  } else {
-    // Fallback: try to bind after a short delay if Fancybox isn't ready yet
-    setTimeout(() => {
-      if (window.Fancybox) {
-        window.Fancybox.bind('[data-fancybox="gallery"]', {
-          on: {
-            reveal: () => {
-              // Optional: add custom behavior
-            },
+  const initFancybox = () => {
+    if (window.Fancybox) {
+      window.Fancybox.bind('[data-fancybox="gallery"]', {
+        on: {
+          reveal: () => {
+            // Optional: add custom behavior
           },
-          autoSize: true,
-          width: 1200,
-          height: 800,
-        });
-      }
-    }, 100);
+        },
+        // Enable all toolbar buttons
+        toolbar: {
+          display: {
+            left: ['infobar'],
+            middle: ['zoomIn', 'zoomOut', 'toggle1to1', 'rotateCW', 'flipX'],
+            right: ['slideshow', 'fullscreen', 'thumbs', 'close'],
+          },
+        },
+        // Enable image counter
+        counter: true,
+        // Auto-fit images
+        autoSize: true,
+        // Enable keyboard navigation
+        keyboard: true,
+      });
+      return true;
+    }
+    return false;
+  };
+
+  // Try to initialize immediately
+  if (!initFancybox()) {
+    // Fallback: try after a short delay if Fancybox isn't ready yet
+    setTimeout(initFancybox, 100);
+    // Try again after longer delay
+    setTimeout(initFancybox, 500);
   }
 
   // Initialize UE event handlers
