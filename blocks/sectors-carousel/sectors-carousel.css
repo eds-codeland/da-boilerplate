@@ -114,6 +114,89 @@
   z-index: 2;
 }
 
+/* UE Mode: Row-based slides with visible cells for editing */
+.sectors-carousel .sectors-slide.sectors-slide-bg,
+.sectors-carousel .sectors-slide > .sectors-slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+.sectors-carousel .sectors-slide-title-cell {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: white;
+  font-size: 72px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sectors-carousel .sectors-slide-description-cell {
+  position: absolute;
+  top: calc(50% + 80px);
+  left: 40%;
+  z-index: 1;
+  color: white;
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+.sectors-carousel .sectors-slide-link-cell {
+  position: absolute;
+  top: calc(50% + 80px);
+  left: calc(40% + 420px);
+  z-index: 1;
+}
+
+.sectors-carousel .sectors-slide-link-cell a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+}
+
+/* UE Mode: Add gradient overlay to row-based slides */
+.sectors-carousel .sectors-slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* UE Mode: Ensure cells are above the gradient */
+.sectors-carousel .sectors-slide > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* UE Mode: Style images in slide-bg cells */
+.sectors-carousel .sectors-slide-bg picture,
+.sectors-carousel .sectors-slide-bg img,
+.sectors-carousel .sectors-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .sectors-carousel .sectors-slide-bg {
   position: absolute;
   top: 0;
