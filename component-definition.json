@@ -176,9 +176,10 @@
           "id": "hero",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div class=\"hero\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture><h1></h1></div></div></div>"
+              "unsafeHTML": "<div class=\"hero\"><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div><div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div></div></div>"
             }
-          }
+          },
+          "model": "hero"
         },
         {
           "title": "PA6",
@@ -262,6 +263,29 @@
               "columns": 1
             }
           }
+        },
+        {
+          "title": "Sectors Carousel",
+          "id": "sectors-carousel",
+          "plugins": {
+            "da": {
+              "name": "sectors-carousel",
+              "rows": 1,
+              "columns": 4
+            }
+          },
+          "model": "sectors-carousel",
+          "filter": "sectors-carousel"
+        },
+        {
+          "title": "Sectors Carousel Slide",
+          "id": "sectors-carousel-slide",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div></div><div></div><div><p><a href=\"\">Link</a></p></div></div>"
+            }
+          },
+          "model": "sectors-carousel-slide"
         }
       ]
     }

@@ -288,15 +288,15 @@ main > .section:first-of-type {
 /* section metadata */
 main .section.light,
 main .section.highlight {
-  background-color: var(--light-color);
+  /* background-color: var(--light-color); */
   margin: 0;
-  padding: 40px 0;
+  /* padding: 40px 0; */
 }
 
 main .section.centered {
     text-align: center;
-    padding-left: calc(1 / 6 * 100%);
-    max-width: calc(2 / 3 * 100%);
+    /* padding-left: calc(1 / 6 * 100%);
+    max-width: calc(2 / 3 * 100%); */
 }
 
 main .section {

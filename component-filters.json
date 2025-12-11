@@ -21,6 +21,7 @@
       "pa6",
       "quote",
       "search",
+      "sectors-carousel",
       "tabs",
       "table",
       "text",
@@ -78,6 +79,12 @@
     "id": "text-cards",
     "components": [
       "text-card"
+    ]
+  },
+  {
+    "id": "sectors-carousel",
+    "components": [
+      "sectors-carousel-slide"
     ]
   }
 ]
