@@ -40,6 +40,8 @@ export default function decorate(block) {
       imageCount += 1;
       const item = document.createElement('div');
       item.classList.add('gallery-carousel-item');
+      item.setAttribute('data-aue-model', 'gallery-carousel-item');
+      item.setAttribute('data-aue-resource', `gallery-carousel/item-${imageCount}`);
 
       // Create gallery link with lightbox
       const galleryLink = document.createElement('a');

@@ -69,6 +69,12 @@
     ]
   },
   {
+    "id": "gallery-carousel",
+    "components": [
+      "gallery-carousel-item"
+    ]
+  },
+  {
     "id": "tabs",
     "components": [
       "tabs-item"

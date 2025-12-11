@@ -183,6 +183,17 @@
           }
         },
         {
+          "title": "Gallery Carousel Item",
+          "id": "gallery-carousel-item",
+          "plugins": {
+            "da": {
+              "name": "gallery-carousel-item",
+              "rows": 1,
+              "columns": 1
+            }
+          }
+        },
+        {
           "title": "Hero",
           "id": "hero",
           "plugins": {

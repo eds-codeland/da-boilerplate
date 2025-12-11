@@ -230,14 +230,21 @@
     ]
   },
   {
-    "id": "gallery-carousel",
+    "id": "gallery-carousel-item",
     "fields": [
       {
         "component": "reference",
-        "name": ".gallery-carousel-items .gallery-carousel-item img",
-        "label": "Image",
         "valueType": "string",
-        "multi": true
+        "name": "a>img[src]",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "a>img[alt]",
+        "label": "Image Alt",
+        "multi": false
       }
     ]
   },

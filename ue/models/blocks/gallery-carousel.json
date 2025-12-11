@@ -10,21 +10,44 @@
           "columns": 1
         }
       }
+    },
+    {
+      "title": "Gallery Carousel Item",
+      "id": "gallery-carousel-item",
+      "plugins": {
+        "da": {
+          "name": "gallery-carousel-item",
+          "rows": 1,
+          "columns": 1
+        }
+      }
     }
   ],
   "models": [
     {
-      "id": "gallery-carousel",
+      "id": "gallery-carousel-item",
       "fields": [
         {
           "component": "reference",
-          "name": ".gallery-carousel-items .gallery-carousel-item img",
-          "label": "Image",
           "valueType": "string",
-          "multi": true
+          "name": "a>img[src]",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "a>img[alt]",
+          "label": "Image Alt",
+          "multi": false
         }
       ]
     }
   ],
-  "filters": []
+  "filters": [
+    {
+      "id": "gallery-carousel",
+      "components": ["gallery-carousel-item"]
+    }
+  ]
 }
