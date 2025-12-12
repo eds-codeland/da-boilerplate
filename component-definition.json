@@ -181,7 +181,7 @@
           }
         },
         {
-          "title": "Gallery Carousel Item",
+          "title": "Gallery Item",
           "id": "gallery-carousel-item",
           "plugins": {
             "da": {
