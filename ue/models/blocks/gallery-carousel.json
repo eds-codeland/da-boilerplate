@@ -5,7 +5,7 @@
       "id": "gallery-carousel",
       "plugins": {
         "da": {
-          "unsafeHTML": "<ul class=\"gallery-carousel-items\"></ul>"
+          "unsafeHTML": "<div class=\"gallery-carousel\"></div>"
         }
       }
     },
@@ -14,7 +14,7 @@
       "id": "gallery-carousel-item",
       "plugins": {
         "da": {
-          "unsafeHTML": "<li><div class=\"gallery-carousel-slide-image\"><a class=\"gallery-carousel-link\" data-fancybox=\"gallery\"><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></a></div></li>"
+          "unsafeHTML": "<div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div></div>"
         }
       }
     }

@@ -14,95 +14,82 @@ export default function decorate(block) {
     block.setAttribute('data-aue-label', 'Gallery Carousel');
   }
 
-  // Idempotency: if already decorated, do nothing
-  if (block.querySelector(':scope > .gallery-carousel-items')) {
+  // Idempotency: if already enhanced, do nothing
+  if (block.classList.contains('gallery-carousel--enhanced')) {
     return;
   }
 
-  const rows = Array.from(block.querySelectorAll(':scope > div'));
-
-  // Create ul wrapper matching carousel structure
-  const slidesWrapper = document.createElement('ul');
-  slidesWrapper.classList.add('gallery-carousel-items');
-
-  let slideIndex = 0;
-
-  // Process each row as a gallery item, matching carousel's createSlide pattern
-  rows.forEach(row => {
-    const cells = Array.from(row.querySelectorAll(':scope > div'));
-
-    if (cells.length >= 1) {
-      // Create li item matching carousel-slide structure
-      const item = document.createElement('li');
-      item.classList.add('gallery-carousel-item');
-      item.setAttribute('data-slide-index', slideIndex);
-      item.setAttribute('data-aue-model', 'gallery-carousel-item');
-      item.setAttribute('data-aue-type', 'component');
-      item.setAttribute('data-aue-label', 'Gallery Item');
-      
-      // Transfer UE instrumentation from original row if present
-      const rowResource = row.getAttribute('data-aue-resource');
-      if (rowResource) {
-        item.setAttribute('data-aue-resource', rowResource);
-      } else {
-        item.setAttribute('data-aue-resource', `gallery-carousel/item-${slideIndex}`);
-      }
-
-      // Append original columns directly to item, matching carousel pattern
-      cells.forEach((column, colIdx) => {
-        column.classList.add(`gallery-carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
-        
-        // For image column, wrap picture/img in gallery link for lightbox
-        if (colIdx === 0) {
-          const picture = column.querySelector('picture');
-          const img = picture ? picture.querySelector('img') : column.querySelector('img');
-          
-          if (picture || img) {
-            // Determine href: prefer explicit link in second cell, else image src
-            const secondCell = cells[1];
-            const linkEl = secondCell?.querySelector('a');
-            const href = (linkEl && linkEl.href) ? (img?.src || '') : (img?.src || '');
-            
-            // Create gallery link wrapper
-            const galleryLink = document.createElement('a');
-            galleryLink.href = href;
-            galleryLink.classList.add('gallery-carousel-link');
-            galleryLink.setAttribute('data-fancybox', 'gallery');
-            galleryLink.setAttribute('data-caption', '');
-            
-            // Move picture/img into gallery link
-            if (picture) {
-              galleryLink.append(picture);
-              const movedImg = picture.querySelector('img');
-              if (movedImg) {
-                movedImg.classList.add('gallery-carousel-image');
-                movedImg.loading = 'lazy';
-              }
-            } else if (img) {
-              galleryLink.append(img);
-              img.classList.add('gallery-carousel-image');
-              img.loading = 'lazy';
-            }
-            
-            // Clear column and append gallery link
-            column.innerHTML = '';
-            column.append(galleryLink);
-          }
-        }
-        
-        item.append(column);
+  // If legacy markup exists (<ul>/<li>), migrate items to direct children.
+  const legacyList = block.querySelector(':scope > ul.gallery-carousel-items');
+  if (legacyList) {
+    const legacyItems = Array.from(legacyList.querySelectorAll(':scope > li.gallery-carousel-item'));
+    legacyItems.forEach((li) => {
+      const div = document.createElement('div');
+      // Copy instrumentation + other useful attrs
+      Array.from(li.attributes).forEach(({ name, value }) => {
+        div.setAttribute(name, value);
       });
+      div.classList.add('gallery-carousel-item');
+      // Move children
+      while (li.firstChild) {
+        div.appendChild(li.firstChild);
+      }
+      block.insertBefore(div, legacyList);
+      li.remove();
+    });
+    legacyList.remove();
+  }
 
-      slidesWrapper.append(item);
-      slideIndex += 1;
+  const items = Array.from(block.querySelectorAll(':scope > div'))
+    .filter((el) => el.getAttribute('data-aue-model') === 'gallery-carousel-item' || el.querySelector('picture, img'));
 
-      // Remove the now-empty row from the DOM to avoid duplication
-      row.remove();
+  items.forEach((item, index) => {
+    item.classList.add('gallery-carousel-item');
+    if (!item.getAttribute('data-slide-index')) {
+      item.setAttribute('data-slide-index', index);
     }
+
+    if (item.getAttribute('data-aue-model') === 'gallery-carousel-item') {
+      if (!item.getAttribute('data-aue-type')) {
+        item.setAttribute('data-aue-type', 'component');
+      }
+      if (!item.getAttribute('data-aue-label')) {
+        item.setAttribute('data-aue-label', 'Gallery Item');
+      }
+    }
+
+    // Enhance inner image: wrap picture/img with a link for Fancybox, but do not replace the UE item node.
+    const existingLink = item.querySelector(':scope a.gallery-carousel-link');
+    const picture = item.querySelector('picture');
+    const img = item.querySelector('img');
+
+    if (!img) {
+      return;
+    }
+
+    img.classList.add('gallery-carousel-image');
+    img.loading = 'lazy';
+
+    // If already linked, just ensure Fancybox attrs
+    if (existingLink) {
+      existingLink.setAttribute('data-fancybox', 'gallery');
+      existingLink.setAttribute('data-caption', '');
+      return;
+    }
+
+    // Wrap picture (preferred) or img with a link
+    const link = document.createElement('a');
+    link.href = img.src || '';
+    link.classList.add('gallery-carousel-link');
+    link.setAttribute('data-fancybox', 'gallery');
+    link.setAttribute('data-caption', '');
+
+    const target = picture || img;
+    target.parentNode.insertBefore(link, target);
+    link.appendChild(target);
   });
 
-  // Prepend ul wrapper to block, matching carousel structure
-  block.prepend(slidesWrapper);
+  block.classList.add('gallery-carousel--enhanced');
 
   // Load Fancybox if available - with proper initialization
   const initFancybox = () => {
