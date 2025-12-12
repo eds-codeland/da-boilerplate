@@ -247,7 +247,7 @@
         "multi": false
       }
     ],
-    "labelField": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[alt]"
+    "labelField": "div:nth-child(1)>picture:nth-child(1)>img:nth-child(3)[src]"
   },
   {
     "id": "hero",
