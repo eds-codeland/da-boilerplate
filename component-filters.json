@@ -72,7 +72,8 @@
     "id": "gallery-carousel",
     "components": [
       "gallery-carousel-item"
-    ]
+    ],
+    "max": 8
   },
   {
     "id": "tabs",
