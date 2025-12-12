@@ -27,6 +27,7 @@ export default function decorate(block) {
       // Create li item matching carousel-slide structure
       const item = document.createElement('li');
       item.classList.add('gallery-carousel-item');
+      item.setAttribute('data-slide-index', slideIndex);
       item.setAttribute('data-aue-model', 'gallery-carousel-item');
       
       // Transfer UE instrumentation from original row if present
@@ -36,7 +37,6 @@ export default function decorate(block) {
       } else {
         item.setAttribute('data-aue-resource', `gallery-carousel/item-${slideIndex}`);
       }
-      item.dataset.slideIndex = slideIndex;
 
       // Append original columns directly to item, matching carousel pattern
       cells.forEach((column, colIdx) => {
