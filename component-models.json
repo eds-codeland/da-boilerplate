@@ -235,14 +235,14 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "div picture img[src]",
+        "name": "picture img[src]",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "div picture img[alt]",
+        "name": "picture img[alt]",
         "label": "Image Alt",
         "multi": false
       }
@@ -290,6 +290,19 @@
         "name": "div:nth-child(1)>div:nth-child(2)",
         "label": "Statement",
         "required": true
+      }
+    ]
+  },
+  {
+    "id": "product-teaser",
+    "fields": [
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "div.product-teaser[data-page-size]",
+        "label": "Products to show",
+        "min": 1,
+        "max": 24
       }
     ]
   },

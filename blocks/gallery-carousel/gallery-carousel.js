@@ -19,6 +19,8 @@ export default function decorate(block) {
     return;
   }
 
+  const isUE = window.location.hostname.includes('ue.da.live');
+
   // If legacy markup exists (<ul>/<li>), migrate items to direct children.
   const legacyList = block.querySelector(':scope > ul.gallery-carousel-items');
   if (legacyList) {
@@ -58,7 +60,7 @@ export default function decorate(block) {
       }
     }
 
-    // Enhance inner image: wrap picture/img with a link for Fancybox, but do not replace the UE item node.
+    // Enhance inner image: wrap picture/img with a link for Fancybox (not in UE), but do not replace the UE item node.
     const existingLink = item.querySelector(':scope a.gallery-carousel-link');
     const picture = item.querySelector('picture');
     const img = item.querySelector('img');
@@ -69,6 +71,17 @@ export default function decorate(block) {
 
     img.classList.add('gallery-carousel-image');
     img.loading = 'lazy';
+
+    // In Universal Editor we must keep the DOM simple (no <a> wrapper), otherwise the model selectors
+    // won't match and the Image field will appear empty.
+    if (isUE) {
+      if (existingLink) {
+        const target = picture || img;
+        existingLink.parentNode.insertBefore(target, existingLink);
+        existingLink.remove();
+      }
+      return;
+    }
 
     // If already linked, just ensure Fancybox attrs
     if (existingLink) {

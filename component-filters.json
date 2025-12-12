@@ -18,6 +18,7 @@
       "form",
       "hero",
       "image",
+      "product-teaser",
       "pa6",
       "quote",
       "search",
@@ -74,6 +75,10 @@
       "gallery-carousel-item"
     ],
     "max": 8
+  },
+  {
+    "id": "product-teaser",
+    "components": []
   },
   {
     "id": "tabs",

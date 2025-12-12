@@ -1,0 +1,34 @@
+{
+  "definitions": [
+    {
+      "title": "Product Teaser",
+      "id": "product-teaser",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div class=\"product-teaser\" data-page-size=\"4\"></div>"
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "product-teaser",
+      "fields": [
+        {
+          "component": "number",
+          "valueType": "number",
+          "name": "div.product-teaser[data-page-size]",
+          "label": "Products to show",
+          "min": 1,
+          "max": 24
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "product-teaser",
+      "components": []
+    }
+  ]
+}

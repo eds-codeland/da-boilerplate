@@ -210,6 +210,15 @@
           }
         },
         {
+          "title": "Product Teaser",
+          "id": "product-teaser",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div class=\"product-teaser\" data-page-size=\"4\"></div>"
+            }
+          }
+        },
+        {
           "title": "Quote",
           "id": "quote",
           "plugins": {
