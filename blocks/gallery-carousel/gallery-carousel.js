@@ -5,6 +5,14 @@ export default function decorate(block) {
 
   // Set UE model attribute for Universal Editor
   block.setAttribute('data-aue-model', 'gallery-carousel');
+  // Ensure UE knows this block accepts children of type gallery-carousel-item
+  block.setAttribute('data-aue-filter', 'gallery-carousel');
+  block.setAttribute('data-aue-type', 'container');
+  block.setAttribute('data-aue-behavior', 'component');
+  // Helpful label in UE tree
+  if (!block.getAttribute('data-aue-label')) {
+    block.setAttribute('data-aue-label', 'Gallery Carousel');
+  }
 
   // Idempotency: if already decorated, do nothing
   if (block.querySelector(':scope > .gallery-carousel-items')) {
@@ -29,6 +37,8 @@ export default function decorate(block) {
       item.classList.add('gallery-carousel-item');
       item.setAttribute('data-slide-index', slideIndex);
       item.setAttribute('data-aue-model', 'gallery-carousel-item');
+      item.setAttribute('data-aue-type', 'component');
+      item.setAttribute('data-aue-label', 'Gallery Item');
       
       // Transfer UE instrumentation from original row if present
       const rowResource = row.getAttribute('data-aue-resource');
