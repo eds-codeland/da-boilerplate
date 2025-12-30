@@ -236,18 +236,6 @@ export default async function decorate(block) {
       link.href = slide.link;
       link.classList.add('sectors-slide-link');
       link.setAttribute('aria-label', `Learn more about ${slide.title}`);
-
-      const icon = document.createElement('span');
-      icon.classList.add('icon', 'icon-circle-arrow');
-      const iconImg = document.createElement('img');
-      iconImg.src = 'https://www.acerbisoem.com/wp-content/themes/acerbis/img/circle-gt.svg';
-      iconImg.alt = '';
-      iconImg.loading = 'lazy';
-      iconImg.width = 58;
-      iconImg.height = 58;
-      icon.append(iconImg);
-      link.append(icon);
-
       textWrapper.append(link);
     }
 
